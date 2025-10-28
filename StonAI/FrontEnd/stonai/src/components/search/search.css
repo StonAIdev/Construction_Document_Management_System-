@@ -1,0 +1,380 @@
+.filtersContainer {
+  background: white;
+  min-height: 4rem;
+  width: -webkit-fill-available;
+  border-radius: 8px 0px 0px 8px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  padding-inline: 1.5rem;
+  padding-top: 1.2rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 7px;
+
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transition: transform 2.25s ease-out;
+}
+
+.filterHeight {
+  min-height: 8rem;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transition: transform 2.25s ease-out;
+}
+
+.searchbox fieldset {
+  border: 2px solid var(--orange) !important;
+  border-radius: 8px !important;
+}
+
+.searchbox label {
+  color: var(--orange) !important;
+}
+
+.FiltersClicked {
+  border: 2px solid var(--blue) !important;
+  color: white !important;
+  background-color: var(--blue) !important;
+}
+.FiltersUnclicked {
+  border: 2px solid var(--blue) !important;
+  color: var(--blue) !important;
+}
+
+.FiltersDiv {
+  display: flex;
+  padding-block: 1rem;
+  flex-wrap: wrap;
+}
+
+.AddButton {
+  cursor: pointer;
+  padding-inline: 0.8rem;
+  padding-block: 0.3rem;
+  border-radius: 8px !important;
+  line-height: inherit !important;
+  text-transform: initial !important;
+  font-weight: 400 !important;
+}
+
+.button:focus {
+  outline: none !important;
+}
+
+.fadein {
+  animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ==================================  My Tasks  ================================= */
+/* =============================================================================== */
+/* =============================================================================== */
+
+.tableTab {
+  width: 100%;
+}
+
+.mytasks table {
+  border-collapse: inherit;
+  border-spacing: 3px;
+}
+
+.TableHeadderRow {
+  background-color: rgb(248, 248, 248);
+  background-color: fafcff;
+  display: flex !important;
+  align-items: center;
+  width: 100% !important;
+  height: 50px !important;
+  margin-block: 3px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 2px 5px;
+}
+
+.TableTitle {
+  background: var(--orange);
+  width: 100%;
+  height: 4em;
+  position: inherit;
+  box-shadow: rgb(0 0 0 / 35%) 0px 3px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.tableCellText {
+  color: gray !important;
+  padding-block: 20px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  padding-bottom: 6px !important;
+  margin-bottom: 4px !important;
+  justify-content: left !important;
+  padding-left: 5px;
+}
+
+.CellDivision {
+  border-bottom: 1.1px solid silver;
+}
+
+.tableIcon {
+  color: gray !important;
+  width: 27px;
+  height: 27px;
+  color: white !important;
+}
+
+.tableIcon:hover {
+  animation: rotate-center 0.6s ease-in-out both;
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================================ DRAWER ================================ */
+
+.drawerContainer {
+  width: 500px !important;
+}
+
+.DrawerFlex {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sideline {
+  width: 22px;
+
+  height: 98%;
+
+  background-color: #02283f;
+  border-radius: 10px;
+  margin-top: 1.9vh;
+}
+
+.textfieldStyles {
+  width: 100%;
+  margin-bottom: 2vh !important;
+}
+
+.datesize div div input {
+  height: 12px !important;
+}
+
+.datesize svg {
+  margin-top: 11px !important;
+}
+
+@media only screen and (min-width: 5500px) {
+  .drawerContainer {
+    width: 90vw !important;
+  }
+
+  .sideline {
+    width: 12px;
+    margin-right: -1.5rem;
+  }
+}
+
+.docextractionDrawer {
+  background-color: rgb(251 251 251) !important;
+}
+
+.ResponsibilityCards {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  flex-wrap: wrap;
+  border: 2px solid silver;
+  padding: 8px;
+  margin-inline: 20px;
+  margin-block: 10px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px;
+  row-gap: 7px;
+  padding: 10px;
+  padding-inline: 15px;
+}
+
+.chips {
+  background-color: var(--blue) !important;
+  border: 1px solid var(--blue) !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.chips:hover {
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  background-color: var(--blue) !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px !important;
+  color: white;
+}
+
+.check {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  border: 1px solid #bbb;
+  appearance: none;
+  background-color: rgb(224, 224, 224);
+  transition: all 0.3s;
+}
+
+.check::before {
+  content: "";
+  position: absolute;
+  border: solid #fff;
+  display: block;
+  width: 0.3em;
+  height: 0.6em;
+  border-width: 0 0.1em 0.1em 0;
+  z-index: 1;
+  opacity: 0;
+  /* right: calc(50% - .3em);
+  top: calc(50% - .6em); */
+  transform: rotate(0deg);
+  transition: all 0.3s;
+  transform-origin: center center;
+}
+
+.check:checked {
+  animation: a 0.3s ease-in forwards;
+  background-color: rgb(120, 190, 120);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check:checked::before {
+  opacity: 1;
+  transform: rotate(405deg);
+}
+
+@keyframes a {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale(0.8) rotateY(180deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(360deg);
+  }
+}
+
+.AnsCard {
+  width: 330px;
+  min-height: 100px;
+  padding: 10px;
+  padding-inline: 15px;
+  padding-block: 10px;
+  background-color: white;
+  border: 1px solid silver;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.AnsCard_Email {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  padding-inline: 15px;
+  padding-block: 10px;
+  background-color: white;
+  border: 1px solid silver;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.AnsDetailscard {
+  width: 96%;
+  min-height: 80px;
+  padding: 10px;
+  padding-inline: 15px;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 5px;
+}
+
+.TableCard {
+  padding-inline: 10px;
+  padding-block: 13px;
+  border: 1px solid silver;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px;
+  transition: box-shadow 300ms ease;
+  width: 96%;
+}
+
+.TableCardChips {
+  padding-inline: 8px;
+  padding-block: 3px;
+  border: 1px solid silver;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 0px;
+  transition: box-shadow 300ms ease;
+  cursor: pointer !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.TableCardChips:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px;
+  transition: box-shadow 300ms ease;
+}
+
+.seemoreButton {
+  background: transparent;
+  border: none;
+  color: var(--blue);
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.radioFont {
+  /* margin-bottom: -1 !important; */
+}
+.radioFont label {
+  margin-bottom: 0px !important;
+  font-size: 14px !important;
+}
+
+.radioFont label span {
+  font-size: 14px !important;
+}

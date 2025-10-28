@@ -1,0 +1,50 @@
+.desktopView {
+  display: block;
+}
+.mobileview {
+  display: none;
+}
+
+.mailsNav {
+  background: white;
+  min-height: 2.5rem;
+  width: -webkit-fill-available;
+  border-radius: 8px 0px 0px 8px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  padding-inline: 1.5rem;
+  padding-top: 1.2rem;
+  margin-left: 1rem;
+  margin-top: 5px;
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 7px;
+  padding-bottom: 0.6em;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transition: transform 2.25s ease-out;
+}
+
+.mailsearchbox form {
+  width: auto !important;
+}
+
+.emailleftList > div {
+  width: 100% !important;
+}
+
+.EmailrightColumn {
+  height: 100% !important;
+  background-color: white !important;
+}
+/* media */
+
+@media only screen and (max-width: 500px) {
+  /* For mobile phones: */
+  .desktopView {
+    display: none;
+  }
+  .mobileview {
+    display: block;
+  }
+}

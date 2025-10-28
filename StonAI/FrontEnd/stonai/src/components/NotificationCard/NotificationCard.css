@@ -1,0 +1,104 @@
+.notificationpopup {
+  max-height: 20em;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.NotificationContainer {
+  display: flex;
+  width: 17rem;
+  min-height: 4rem;
+  padding: 0.3em;
+  border-radius: 5px;
+}
+
+.notificationCount {
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  color: white;
+  margin-inline: 10px;
+}
+
+.NotificationDivider {
+  margin: 0px;
+  width: 100% !important;
+  border-width: 2px !important;
+}
+.notificationImg {
+  width: 3em;
+  height: 3em;
+  margin-right: 0.5rem;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.css-1osg484-MuiButtonBase-root-MuiMenuItem-root {
+  white-space: normal !important;
+}
+
+.notificationAvatarDocument {
+  width: 35px;
+  height: 35px;
+  aspect-ratio: 1;
+  background-color: var(--green);
+  color: white !important;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  margin-right: 10px !important;
+}
+
+.notificationAvatarTask {
+  width: 35px;
+  height: 35px;
+  aspect-ratio: 1;
+  background-color: #9cc0fa;
+  color: var(--darkblue) !important;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  margin-right: 10px !important;
+}
+
+.notificationAvatarDocument i {
+  color: white !important;
+}
+
+.notificationAvatarTask i {
+  color: var(--darkblue) !important;
+}
+
+.UnreadMarker {
+  background: var(--blue);
+  height: 6px;
+  width: 6px;
+  border-radius: 100%;
+  position: absolute;
+  margin-left: -5px;
+  margin-top: -5px;
+}
+
+.Unread {
+  display: block;
+}
+.Read {
+  display: none;
+}
+
+.Textwrap {
+  white-space: normal !important;
+}
+
+.UnreadText{
+  font-weight: 600 !important;
+}
+

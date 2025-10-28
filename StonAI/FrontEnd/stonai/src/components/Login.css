@@ -1,0 +1,52 @@
+.logincontainer{
+    background-color: white !important;
+    height: 660px !important;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 650px !important
+}
+
+.loginleft{
+    /* background-image: url("https://img.freepik.com/free-vector/engineers-team-discussing-issues-construction-site_74855-4786.jpg?t=st=1646033951~exp=1646034551~hmac=4ddc23e7f93d4baa7f582fe1c41b173a1211a9fc3cb22e3d7c481b336136dea8&w=996"); */
+    background-repeat: no-repeat;
+    /* background-color: rgba(0, 0, 0, 0.075); */
+    /* background-color: white; */
+    border-radius: 10px 0 0 10px;
+    height: 660px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.Loginlogo{
+    width: 130px;
+    margin-bottom: 55px;
+    /* margin-right: auto !important; */
+}
+
+.loginwhite{
+    display: flex !important;
+    align-items: center !important;
+}
+
+.logintextbox{
+    margin-bottom: 25px !important;
+}
+
+.logintextbox fieldset{
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 2px solid var(--blue) !important;
+}
+
+.logintextshadow{
+    text-shadow: 2px 1px 1px #00000069;
+}
+
+@media only screen and (max-width: 770px) {
+    .loginleft{
+        display: none !important;
+    }
+  }

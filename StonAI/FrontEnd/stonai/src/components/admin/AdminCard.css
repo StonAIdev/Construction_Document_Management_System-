@@ -1,0 +1,98 @@
+.Dashcard {
+  display: flex;
+  flex-direction: row;
+  width: 260px;
+  height: 150px;
+  padding-block: 5px;
+  background-color: white;
+  border: 1px solid lightgray;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 8px;
+  border-radius: 8px;
+  justify-content: space-between;
+  justify-content: start;
+
+  align-items: center;
+  margin-top: 10px;
+  margin-inline: 10px;
+  animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.Dashcard:hover{
+  cursor: pointer;
+}
+
+.dashCardimg {
+  width: 60px !important;
+  height: 60px !important;
+  opacity: 0.5 !important;
+  margin-right: 5px !important;
+  margin-top: auto !important;
+}
+.cardsidebar {
+  width: 5px !important;
+  height: 100%;
+  margin-block: 30px;
+  margin-left: auto;
+  margin-right: 5px;
+  border-radius: 1px 4px 4px 1px;
+}
+
+.cardline {
+  border-left: 2px solid silver;
+  height: 120px;
+  width: 4px;
+  margin-right: -4px;
+}
+
+.DashCardNumber {
+  font-size: 35px;
+}
+
+.inviteparent {
+  height: 309px;
+  width: 100%;
+  margin-top: 11px;
+  border-radius: 8px;
+  background-color: var(--darkblue);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  animation: fade-in-top 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation-delay: 0.45s;
+}
+
+.invitebutton {
+  background-color: orange;
+  padding-block: 5px;
+  padding-inline: 40px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 3px;
+}
+
+.AdminIcons {
+  display: flex;
+  margin-left: auto;
+  align-self: flex-end;
+  gap: 5px;
+  margin-bottom: 1px;
+}
+
+/*  ============================= Animation =============================  */
+
+@keyframes fade-in-top {
+  0% {
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

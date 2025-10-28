@@ -1,0 +1,52 @@
+.tabDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 170px;
+    margin-inline: 3px;
+    
+
+}
+
+.tabbody{
+    background-color: var(--blue);
+    /* padding-inline: 40px; */
+    padding-block: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 3px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabLine{
+    height: 4px !important;
+    opacity: 1 !important;
+    width: 160px !important;
+    border-width: 3px;
+    border-color: white;
+    margin-bottom: 0px !important;
+    position: absolute;
+    z-index: 5;
+    border-radius: 10%;
+    color: white;
+    display: block;
+
+}
+
+.tabclicked{
+    /* background-color: rgb(238, 238, 238); */
+    background: white;
+    color: var(--blue);
+}
+
+.lineClicked{
+    border-color: var(--blue);
+
+}

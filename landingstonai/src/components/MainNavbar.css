@@ -1,0 +1,45 @@
+.NavStyle{
+    padding-inline: 20px;
+    height: 60px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+    box-shadow:  rgb(0 0 0 / 35%) 0px 1px 9px 0px !important;
+    z-index: 10;
+}
+
+.NavSize{
+    width: calc(100% - 260px) !important;
+}
+.navText{
+    margin-inline: 5px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.textPosition{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-item{
+    cursor: pointer !important;
+}
+
+ /* MEdia queries */
+ /* ======================== For tablet screen =================================*/
+ 
+ @media only screen and (max-width: 992px) {
+    .navColapseStyle{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+    }
+
+    .navButtonMargin{
+        margin-bottom: 0.5rem !important;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+  .NavSize{
+      width: 100% !important;
+  }
+  }

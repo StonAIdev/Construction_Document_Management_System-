@@ -1,0 +1,93 @@
+.SubmittalHeading {
+  font-weight: 500;
+  color: grey;
+}
+
+.submittalTitle div span {
+  font-weight: 600 !important;
+  color: grey;
+  text-decoration: underline;
+}
+
+.keyparent {
+  height: 20px;
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  justify-content: end;
+  right: -20px;
+}
+
+.KeySection {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: transparent;
+  width: 20px;
+  height: 280px;
+  border-radius: 8px;
+  color: white;
+  position: fixed;
+  z-index: 1;
+  top: 40%;
+
+  transition: 0.3s ease-in-out;
+}
+
+.keyback {
+  background-color: red;
+  padding-inline: 20px;
+  transform: rotate(-90deg);
+  margin-left: -22px;
+}
+
+.KeySection:hover {
+  width: 335px !important;
+  background-color: #474747bf;
+}
+
+.KeyIndecation_card {
+  background-color: #f6f7f8;
+  padding: 10px;
+  margin-block: 5px;
+  display: flex;
+  width: 90%;
+  border-radius: 8px;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.key-card-text {
+  color: grey;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-left: 10px !important;
+}
+
+.KeySection:hover .KeyIndecation_card:nth-child(1) {
+  opacity: 1 !important;
+  transition-delay: 0.2s;
+}
+
+.KeySection:hover .KeyIndecation_card:nth-child(2) {
+  opacity: 1 !important;
+  transition-delay: 0.3s;
+}
+
+.KeySection:hover .KeyIndecation_card:nth-child(3) {
+  opacity: 1 !important;
+  transition-delay: 0.4s;
+}
+
+.DocExtractionTextField label {
+  font-size: 13px !important;
+}
+
+.DocExtractionTextField input {
+  font-size: 13px !important;
+}
+
+.DocExtractionTextField {
+  padding-top: 10px !important;
+}

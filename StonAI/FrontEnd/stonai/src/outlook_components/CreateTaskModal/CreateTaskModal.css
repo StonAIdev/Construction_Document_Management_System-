@@ -1,0 +1,109 @@
+.TaskModalContainer {
+  position: absolute;
+  z-index: 20;
+  /* background-color: #0000008c; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.TaskModal {
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content !important;
+  z-index: 21;
+  height: fit-content;
+  padding-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 3px 5px 15px;
+  border-radius: 15px;
+
+  background-color: var(--background);
+  margin-inline: 8px;
+  cursor: default;
+}
+
+.TaskHead {
+  color: white;
+  background-color: var(--blue);
+  padding-block: 1rem;
+  padding-inline: 1rem;
+  border-radius: 15px 15px 0px 0px;
+}
+.TaskBody {
+  padding: 1rem;
+  width: 41vw;
+  height: 50vh;
+}
+
+.scrollableSection {
+  max-width: vw;
+  min-height: 90% !important;
+  max-height: 95% !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.TaskFooter {
+  padding-inline: 1rem;
+  gap: -5px;
+  display: flex;
+  justify-content: right;
+}
+
+.AddIcon {
+  width: 1.5em;
+  height: 1.5em;
+  background-color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  margin-top: -5px;
+  cursor: pointer;
+}
+
+.AddIcon svg {
+  color: white;
+  font-size: 1.3em;
+}
+
+/* ========================================================== */
+/* ========================  Modal Card ======================== */
+
+.taskCardContainer {
+  background-color: white;
+  min-height: 7em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 2px 1px 7px;
+  margin-block: 13px;
+  padding-top: 15px;
+  padding-right: 10px;
+}
+
+.TaskModalIcons {
+  margin-top: 0.3em;
+  font-size: 25px;
+  /* margin-block: 0.5em; */
+  margin-inline: 0.4em;
+}
+
+.datePickerStyle {
+  width: 100% !important;
+}
+
+.textfieldStyles div div {
+  width: 100% !important;
+}
+
+.MuiFormControl-root {
+  width: 100%;
+}
+.MuiTextField-root {
+  width: 100%;
+}

@@ -1,0 +1,53 @@
+.WhyCardContainer {
+  background: white;
+  width: 13em;
+  width: 25em;
+  height: 5.5rem;
+  min-height: 5.5rem;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
+  margin: 0rem;
+  transition: 0.2s ease-in-out !important;
+  z-index: 10;
+  position: sticky;
+}
+
+.WhyIcon {
+  position: absolute;
+  top: 14.5px;
+  width: 2.8rem;
+  height: 2.8rem;
+  padding: 8px;
+  margin-right: 5px;
+  color: var(--orange);
+}
+
+.WhycardText {
+  opacity: 0;
+  /* display: none !important; */
+  transition-delay: 2s;
+  transition: 0.2s ease-in-out !important;
+  color: grey !important;
+}
+
+.WhyCardContainer:hover {
+  height: fit-content;
+  min-height: 10rem !important;
+  transition: 0.2s ease-in-out !important;
+}
+
+.WhyCardContainer:hover .WhycardText {
+  /* display: flex !important; */
+  opacity: 1;
+  transform: translateY(4px);
+  z-index: 100;
+  transition-delay: 2s;
+  transition: 0.3s ease-in-out !important;
+}
+
+@media only screen and (max-width: 600px) {
+.WhyCardContainer{
+  width: 18em;
+}
+
+}

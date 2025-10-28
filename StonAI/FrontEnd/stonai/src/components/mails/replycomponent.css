@@ -1,0 +1,74 @@
+.createEmailContainerReply {
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+  padding-inline: 0.5em;
+  height: 100%;
+}
+
+.createEmailSplitReply {
+  display: flex;
+  width: 90% !important;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 7px;
+}
+
+.addAttacchmenticonReply {
+  color: var(--blue);
+  margin-top: 6px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.buttoncontainerReply {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  align-items: center;
+}
+
+.contextIconsReply {
+  margin-left: 5px;
+  margin-right: 15px;
+  font-size: 14px;
+  color: var(--blue) !important;
+}
+
+.ContextSearchBtnReply {
+  border: 2px solid var(--blue);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  font-size: 14px;
+  color: var(--blue) !important;
+  transition: 0.5s ease-in-out;
+}
+
+.ContextSearchBtnReply :hover {
+  background-color: var(--blue);
+  color: white !important;
+  transition: 0.3s ease-in-out;
+}
+
+.filtersSubmenuReply {
+  color: black !important;
+  text-transform: capitalize !important;
+  width: 100% !important;
+  justify-content: start !important;
+  background-color: transparent !important;
+}
+
+.EmailBodyReply {
+  position: relative !important;
+}
+
+.EmailBodyReply textarea {
+  max-height: 160px !important;
+  min-height: fit-content !important;
+}
+
+.EmailBodyReply .MuiOutlinedInput-root {
+  display: block !important;
+}

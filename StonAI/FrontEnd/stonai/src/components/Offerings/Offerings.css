@@ -1,0 +1,94 @@
+.OfferingsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    z-index: 3;
+}
+.OfferingSplit{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.OfferingAlignment{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.VideoBox{
+    width: 32rem;
+    height: 18rem;
+    height: 24rem;
+    border-radius: 8px;
+    border: 5px solid var(--blue);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
+
+    background-image: url("./Assets/ocr.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.OfferingCardsContainer{
+    width: 30rem;
+    min-height: 7rem;
+    border-radius: 8px;
+    margin-block: .7rem;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 7px;
+    transition: outline .2s ease;
+}
+
+.OfferingCardsContainer:hover{
+    outline: 3px solid var(--blue) !important
+}
+
+.offeringIconContainer{
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+
+}
+
+.OfferingIcon{
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 6px;
+    
+}
+
+
+
+@media only screen and (max-width: 1199px) {
+    .OfferingSplit{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .VideoBox{
+        margin-bottom: 1rem;
+        border: 3px dashed;
+    }
+
+    .OfferingAlignment{
+        align-items: center;
+        justify-content: center;
+    }
+  }
+
+  @media only screen and (max-width: 566px) {
+    .VideoBox{
+        width: 95vw;
+        height: 37vh;
+        margin-bottom: 1rem;
+    }
+    .OfferingCardsContainer{
+        width: 100%;
+    }
+
+
+  }

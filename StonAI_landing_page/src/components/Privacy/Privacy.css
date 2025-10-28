@@ -1,0 +1,37 @@
+.privacybackground{
+    background-color: white;
+    padding-top: 4rem;
+}
+
+.privacysplit{
+    display: flex;
+    width: 100% !important;
+}
+
+.privacyimg{
+    width: 500px;
+}
+
+.liststyle{
+    padding-left: 3vw;
+}
+
+.liststyle li{
+    line-height: 1.8 !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .privacyimg{
+        width: 280px;
+    }
+
+    .privacysplit{
+        flex-direction: column;
+    }
+  }
+
+@media only screen and (max-width: 1000px) {
+.privacycolumn{
+    flex-direction: column;
+}
+}

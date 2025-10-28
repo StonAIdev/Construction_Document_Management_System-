@@ -1,0 +1,138 @@
+.AccordionColor {
+  background-color: #f3f4f8 !important;
+  margin-bottom: 10px;
+}
+
+.AccordionColor > div {
+  margin: 0px !important;
+}
+
+.AccordionColor > div:nth-child(2) {
+  position: absolute !important;
+  left: 0px !important;
+  display: flex;
+  justify-content: start !important;
+  align-items: center;
+  z-index: 2;
+}
+
+.iconspace {
+  padding-left: 10px;
+}
+
+.ExpandIcon1:hover {
+  animation: rotate-center 0.6s ease-in-out both;
+}
+
+.Accordionmargin {
+  margin: 0px !important;
+}
+
+.docSelectionText:hover {
+  color: var(--blue) !important;
+  text-decoration: underline !important;
+}
+
+.MaterialTableChips {
+  background-color: #5999e4 !important;
+  background-color: var(--blue) !important;
+  color: white !important ;
+  max-width: 70px !important;
+}
+
+.doclistTable {
+  display: flex;
+  flex-direction: column;
+  width: 80vw !important;
+}
+
+.doclistTable > div > div:last-child > div > div:last-child{
+  height: 500px;
+}
+
+
+
+
+.doclistTable table {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.doclistTable table tr th {
+  padding-block: 4px !important;
+  /* background-color: #e0e0e09f; */
+  background: #ececec;
+  color: grey !important;
+  font-weight: 600;
+  position: sticky!important;
+  z-index: 1 !important;
+}
+
+.doclistTable table tr th:nth-child(1) {
+  /* border: 4px solid blue; */
+  border-radius: 10px 0px 0px 0px;
+  width: 30px !important;
+}
+
+.doclistTable table tr th:nth-child(2) {
+  /* border: 4px solid yellow; */
+  min-width: 50px !important;
+}
+
+.doclistTable table tr th:last-child {
+  /* border: 4px solid blue; */
+  width: 250px !important;
+  border-radius: 0px 10px 0px 0px;
+  text-align: start !important;
+  padding-left: 12px !important;
+  color: #c8e4fd;
+}
+
+.doclistTable table tr th:last-child span {
+  display: none;
+}
+
+.doclistTable table tr td {
+  padding-block: 0px !important;
+  border-bottom: 2px solid silver;
+  border-right: 2ps solid silver;
+}
+
+.doclistTable table tr td:last-child div {
+  justify-content: flex-end !important;
+}
+
+.doclistTable table tr td:last-child button svg {
+  margin: -6px !important;
+}
+
+.TableColapse {
+  font-size: 14px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 45px !important;
+  cursor: pointer;
+  width: fit-content;
+  color: grey;
+}
+
+.TableColapse svg {
+  font-size: 24px !important;
+  opacity: 0.6;
+}
+
+@media only screen and (max-width: 1655px) {
+  .doclistTable {
+    width: 79vw !important;
+  }
+}
+
+.truncstestyle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

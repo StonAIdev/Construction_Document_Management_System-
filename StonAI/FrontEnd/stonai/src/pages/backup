@@ -1,0 +1,2278 @@
+import { Helmet } from "react-helmet";
+import React, { useState, useEffect, useRef } from "react";
+import "../components/workspace/Workspace.css";
+import Typography from "@mui/material/Typography";
+import axios from "axios";
+import { url } from "../url";
+import "monday-ui-react-core/dist/main.css";
+import Heading1 from "../Reusable Components/Headings/Heading1";
+import MenuIcon from "@mui/icons-material/Menu";
+import ButtonTabs from "../components/ButtonTabs/ButtonTabs";
+import { Box, Container, Grid, IconButton } from "@material-ui/core";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import TextField from "@mui/material/TextField";
+import { Tabs, Tab, Icon } from "@mui/material";
+import ButtonStyled from "../Reusable Components/Buttons/ButtonStyled";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Fade from "react-reveal/Fade";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import Radio from "@mui/material/Radio";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
+import PropTypes from "prop-types";
+import Collapse from "@mui/material/Collapse";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Checkbox from "@mui/material/Checkbox";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import Skeleton from "@mui/material/Skeleton";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import EditIcon from "@mui/icons-material/Edit";
+import Avatar from "@mui/material/Avatar";
+import AvatarGroup from "@mui/material/AvatarGroup";
+import { useSnackbar } from "notistack";
+import AddIcon from "@mui/icons-material/Add";
+import Fab from "@mui/material/Fab";
+import Menu from "@mui/material/Menu";
+import ContentCut from "@mui/icons-material/ContentCut";
+import ContentCopy from "@mui/icons-material/ContentCopy";
+import ContentPaste from "@mui/icons-material/ContentPaste";
+import Cloud from "@mui/icons-material/Cloud";
+import MenuList from "@mui/material/MenuList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle, faFilter } from "@fortawesome/free-solid-svg-icons";
+import Alert from "@mui/material/Alert";
+import CloseIcon from "@mui/icons-material/Close";
+
+import { loginRequest } from "../authConfig";
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
+var taskAllUSers = [];
+var taskAllUSersAssigned = [];
+var taskGroups = [];
+var taskGroupsAssigned = [];
+const filter = createFilterOptions();
+
+export default function Workspace({
+  user,
+  userInfo,
+  project,
+  pca,
+  socket,
+  setSocket,
+}) {
+  // ============================================================================
+  const [tabValue, setTabValue] = useState("one");
+  const [open, setOpen] = useState(false);
+
+  const [openAlert, setOpenAlert] = useState(true);
+
+  const [FiltersClicked, setFiltersClicked] = useState(false);
+  const [current, setCurrent] = useState("");
+
+  const [taskName, setTaskName] = useState("");
+  const [taskNameFilter, setTaskNameFilter] = useState("");
+
+  const [taskDetails, setTaskDetails] = useState("");
+  const [taskGroupsState, setTaskGroups] = useState(null);
+  const [status, setStatus] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+
+  const [startdate, setstartdate] = useState(null);
+  const [deadline, setdeadline] = useState(null);
+  const [startdateFilter, setstartdateFilter] = useState(null);
+  const [deadlineFilter, setdeadlineFilter] = useState(null);
+
+  const [value, setValue] = useState([]);
+  const [valueFilter, setValueFilter] = useState([]);
+
+  let [colorChange, setcolorChange] = useState("#ff6347");
+
+  const [projectUsers, setProjectUsers] = useState([]);
+
+  const [tasksDataFromDB, setTasksDataFromDB] = useState([]);
+  const [assignedTasksDataFromDB, setAssignedTasksDataFromDB] = useState([]);
+
+  const [taskId, setTaskId] = useState();
+
+  var [isLoading, setLoading] = useState(false);
+
+  const [filterButton, setFilterButton] = useState(false);
+
+  console.log(
+    "filteresss",
+    valueFilter,
+    taskNameFilter,
+    statusFilter,
+    startdateFilter,
+    deadlineFilter
+  );
+
+  const { enqueueSnackbar } = useSnackbar();
+  const handleClick = () => {
+    enqueueSnackbar("I love snacks.");
+  };
+
+  console.log("userInfo", userInfo);
+  const handleClickVariant = (variant, title) => {
+    // variant could be success, error, warning, info, or default
+    enqueueSnackbar(title, { variant });
+  };
+
+  // console.log(tas)
+
+  const [userTasks, setuserTasks] = useState(null);
+  const [tasksGroups, setTasksGroups] = useState(null);
+
+  const [assignedTasks, setAssignedTasks] = useState([]);
+  console.log("assssd", assignedTasks);
+
+  const getUserTasks = async () => {
+    // if (filterButton === false) {
+    try {
+      var res = await axios.post(
+        url + "/Tasks/getTasks",
+        {
+          user_id: userInfo.user_id,
+          project_id: project.project_id,
+        },
+        {
+          headers: { token: user.token },
+        }
+      );
+
+      setTasksDataFromDB(res.data.rows);
+      setLoading(true);
+    } catch (e) {
+      console.log(e);
+    }
+    console.log("tasks", res.data.rows);
+    // } else if (filterButton === true) {
+    //   console.log("calleeddd");
+
+    //   try {
+    //     var res1 = await axios.post(
+    //       url + "/Tasks/getTasksFilter",
+    //       {
+    //         user_id: userInfo.user_id,
+    //         project_id: project.project_id,
+    //         group_name: valueFilter.group_name,
+    //         task_name: taskNameFilter,
+    //         status: statusFilter.label,
+    //         start_date: startdateFilter,
+    //         deadline: deadlineFilter,
+    //       },
+    //       {
+    //         headers: { token: user.token },
+    //       }
+    //     );
+    //     console.log("resss", res1);
+    //     setTasksDataFromDB(res1.data.rows);
+    //     setLoading(true);
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // }
+  };
+
+  const getUsers = async () => {
+    try {
+      var res = await axios.post(
+        url + "/Tasks/getUsers",
+        {
+          project_id: project.project_id,
+        },
+        {
+          headers: { token: user.token },
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+    console.log("users", res.data);
+    setProjectUsers(res.data);
+  };
+
+  const getUserAssignedTasks = async () => {
+    try {
+      var res = await axios.post(
+        url + "/Tasks/getAssignedTasks",
+        {
+          user_id: userInfo.user_id,
+          project_id: project.project_id,
+        },
+        {
+          headers: { token: user.token },
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+    setAssignedTasksDataFromDB(res.data.rows);
+  };
+
+  const HandleNotifyByEmail = async (title) => {
+    console.log("Dsadasdasfdsfdsf");
+    var a = window.sessionStorage.getItem(
+      "697ad198-826a-42cb-9b69-56014aa18c18.a1e3cc4f-47e2-4e32-a7a1-5b14136b160b-login.windows.net-accesstoken-458bcb35-e708-4fd7-a2c0-d7f4c64e9b8e-a1e3cc4f-47e2-4e32-a7a1-5b14136b160b-mail.read mail.readbasic mail.send notifications.readwrite.createdbyapp openid profile user.read email"
+    );
+
+    if (!a) {
+      alert("User not signed in click on ok to sign user");
+      await pca
+        .loginPopup(loginRequest)
+        .then(function (response) {
+          console.log("pcaaaa", pca);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      a = window.sessionStorage.getItem(
+        "697ad198-826a-42cb-9b69-56014aa18c18.a1e3cc4f-47e2-4e32-a7a1-5b14136b160b-login.windows.net-accesstoken-458bcb35-e708-4fd7-a2c0-d7f4c64e9b8e-a1e3cc4f-47e2-4e32-a7a1-5b14136b160b-mail.read mail.readbasic mail.send notifications.readwrite.createdbyapp openid profile user.read email"
+      );
+    }
+
+    if (a) {
+      const token = JSON.parse(a.toString()).secret;
+
+      console.log("adsdsds", assignedTasks);
+      let recvArr = [];
+      assignedTasks.map((r) => {
+        if (r.email_address && r.email_address.length > 0) {
+          recvArr.push({ emailAddress: { address: r.email_address } });
+        }
+      });
+      var message = "";
+      var subject = "";
+      if (title === "add") {
+        subject = `${taskName} is assigned to you`;
+        message = `You have been assigned a new task ${taskName} with task group ${value.group_name} with ${deadline} as deadline`;
+      } else if (title === "update") {
+        subject = `${taskName} is updated`;
+        message = `Task ${taskName} is updated`;
+      }
+
+      // let ccArr = [];
+      // cc.map((r) => {
+      //   ccArr.push({ emailAddress: { address: r } });
+      // });
+
+      var data = {
+        message: {
+          subject: subject,
+          body: {
+            contentType: "Text",
+            content: message,
+          },
+          toRecipients: recvArr,
+          // ccRecipients: ccArr,
+          // attachments: [],
+        },
+        saveToSentItems: "true",
+      };
+
+      var config = {
+        method: "post",
+        url: "https://graph.microsoft.com/v1.0/me/sendMail",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        data: data,
+      };
+
+      console.log("config", config);
+
+      await axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+          var usernameSession = window.sessionStorage.getItem(
+            "697ad198-826a-42cb-9b69-56014aa18c18.a1e3cc4f-47e2-4e32-a7a1-5b14136b160b-login.windows.net-a1e3cc4f-47e2-4e32-a7a1-5b14136b160b"
+          );
+          const username = JSON.parse(usernameSession.toString()).username;
+          axios.post(
+            url + "/Accounts/updateEmail",
+            {
+              user_id: userInfo.user_id,
+              email_address: username,
+            },
+            {
+              headers: { token: user.token },
+            }
+          );
+          handleClickVariant(
+            "success",
+            "Notification successfully sent by email"
+          );
+        })
+        .catch(function (error) {
+          alert("User not signed in click on ok to sign user");
+
+          pca
+            .loginPopup(loginRequest)
+            .then(function (response) {
+              // success response
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+    }
+  };
+  const addNotifications = async (task_id, title) => {
+    var message = "";
+    if (title === "add") {
+      message = `You have been assigned a new task ${taskName} with task group ${value.group_name}`;
+    } else if (title === "update") {
+      message = `Task ${taskName} is updated`;
+    }
+    try {
+      const response = await axios.post(
+        url + "/Notification/addNotificationsTask",
+        {
+          user: user,
+          message: message,
+          receivers: assignedTasks,
+          task_id: task_id,
+        },
+        { headers: { token: user.token } }
+      );
+      handleClickVariant("success", "Notification successfully sent by StonAI");
+    } catch (error) {
+      console.log(error.response);
+      return error.response;
+    }
+  };
+  const Notify = async (task_id, title) => {
+    const res = await addNotifications(task_id, title);
+    socket.emit("sendNotification", {
+      sender: user,
+      receivers: assignedTasks,
+    });
+  };
+
+  const handleTaskCreation = async () => {
+    console.log(
+      "sdsa",
+      taskName,
+      taskDetails,
+      colorChange,
+      status.label,
+      assignedTasks,
+      startdate,
+      deadline,
+      value
+    );
+
+    if (colorChange === "#ff6347" && Object.keys(value).length > 1) {
+      colorChange = value.group_color;
+      console.log("color", colorChange);
+    }
+
+    var res = null;
+    try {
+      res = await axios.post(
+        url + "/Tasks/createTasks",
+        {
+          user_id: userInfo.user_id,
+          project_id: project.project_id,
+          task_name: taskName,
+          task_status: status.label,
+          task_deadline: deadline,
+          task_assigned_to: assignedTasks,
+          group_name: value.group_name,
+          group_color: colorChange,
+          task_details: taskDetails,
+          task_startdate: startdate,
+          group_id: value.group_id,
+        },
+        {
+          headers: { token: user.token },
+        }
+      );
+
+      handleClickVariant("success", "Tasks created Sucessfully");
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+    }
+    console.log("radio", radioButtonValue);
+    if (radioButtonValue === "By Email") {
+      HandleNotifyByEmail("add");
+    } else if (radioButtonValue === "Both") {
+      HandleNotifyByEmail("add");
+      Notify(res.data, "add");
+    } else if (radioButtonValue === "By StonAI") {
+      Notify(res.data, "add");
+    }
+  };
+
+  const handleTaskUpdate = async () => {
+    console.log(
+      taskName,
+      taskDetails,
+      status.label,
+      assignedTasks,
+      startdate,
+      deadline,
+      taskId
+    );
+
+    console.log("assignedssadsa", assignedTasks);
+
+    try {
+      var res = await axios.post(
+        url + "/Tasks/updateTask",
+        {
+          user_id: userInfo.user_id,
+          project_id: project.project_id,
+          task_name: taskName,
+          task_status: status.label,
+          task_deadline: deadline,
+          task_assigned_to: assignedTasks,
+          task_details: taskDetails,
+          task_startdate: startdate,
+          taskId: taskId,
+        },
+        {
+          headers: { token: user.token },
+        }
+      );
+
+      handleClickVariant("success", "Task Updated Sucessfully");
+      setLoading(false);
+      if (radioButtonValue === "By Email") {
+        HandleNotifyByEmail("update");
+      } else if (radioButtonValue === "Both") {
+        HandleNotifyByEmail("update");
+        Notify(taskId, "update");
+      } else if (radioButtonValue === "By StonAI") {
+        Notify(taskId, "update");
+      }
+      setValue([]);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+    getUserAssignedTasks();
+    getUserTasks();
+    console.log("sadafxcvd", assignedTasksDataFromDB);
+  }, [project, user, isLoading, filterButton]);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  const handleTabChange = (event, newValue) => {
+    console.log("tab", newValue);
+    setTabValue(newValue);
+  };
+
+  //-------------------------- Drawer -----------------------------
+
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const [DrawerTitle, setDrawerTitle] = useState("");
+  const anchor = "right";
+  const toggleDrawer = (anchor, open, title) => (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setDrawerTitle(title);
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const toggleDrawerClose = (anchor, open, title) => (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setDrawerTitle(title);
+    setTaskName("");
+    setStatus("");
+    setstartdate(null);
+    setTaskDetails("");
+    setdeadline(null);
+    setTaskId("");
+    setCurrent("");
+    setAssignedTasks([]);
+    setState({ ...state, [anchor]: open });
+  };
+
+  const toggleDrawerUpdate =
+    (
+      anchor,
+      open,
+      title,
+      name,
+      status,
+      description,
+      deadline,
+      startdate,
+      task_id,
+      current
+    ) =>
+    (event) => {
+      // const assignedUsers = [];
+      // taskAllUSers.map((t) => {
+      //   if (t.task_id === task_id) {
+      //     assignedUsers.push({ username: t.username });
+      //   }
+
+      // });
+
+      setTaskName(name);
+      setStatus({ label: status });
+      setstartdate(startdate);
+      setTaskDetails(description);
+      setdeadline(deadline);
+      setTaskId(task_id);
+      setCurrent(current);
+      const arr = [];
+      if (current === "mytask") {
+        taskAllUSers.forEach((t) => {
+          if (task_id === t.task_id) {
+            arr.push({
+              user_id: t.user_id,
+              username: t.username,
+              email_address: t.email_address,
+            });
+          }
+        });
+        console.log("cureent", current, arr, taskAllUSers);
+
+        setAssignedTasks(arr);
+      } else if (current === "assignedtask") {
+        taskAllUSersAssigned.forEach((t) => {
+          if (task_id === t.task_id) {
+            arr.push({
+              user_id: t.user_id,
+              username: t.username,
+              email_address: t.email_address,
+            });
+          }
+        });
+        setAssignedTasks(arr);
+      }
+      console.log("sadsa", assignedTasks);
+
+      if (
+        event &&
+        event.type === "keydown" &&
+        (event.key === "Tab" || event.key === "Shift")
+      ) {
+        return;
+      }
+      setDrawerTitle(title);
+      console.log("assignedssadsa", assignedTasks);
+
+      setState({ ...state, [anchor]: open });
+    };
+
+  const [radioButtonValue, setRadioButtonValue] = React.useState("Both");
+
+  const handleRadioButtonChange = (event) => {
+    setRadioButtonValue(event.target.value);
+  };
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      role="presentation"
+      // onClick={toggleDrawer(anchor, false)}
+      // onKeyDown={toggleDrawer(anchor, false)}
+      className="drawerContainer"
+    >
+      <div className="p-3 DrawerFlex ">
+        <div className="w-100 mr-3">
+          <Heading1
+            color="black"
+            paddingBlock=".4rem"
+            size="4vh"
+            weight="500"
+            marginBotto1m="2vh"
+            JFcontent="left"
+          >
+            {DrawerTitle}
+          </Heading1>
+          {/* 
+          <Heading1
+            color="black"
+            paddingBlock=".4rem"
+            size="3vh"
+            weight="500"
+            marginBotto1m="0px"
+            JFcontent="left"
+          >
+            Details
+          </Heading1> */}
+          {DrawerTitle === "Add Task" ? (
+            <>
+              <Autocomplete
+                onChange={(event, newValue) => {
+                  if (typeof newValue === "string") {
+                    setValue({
+                      group_name: newValue,
+                    });
+                  } else if (newValue && newValue.inputValue) {
+                    // Create a new value from the user input
+                    setValue({
+                      group_name: newValue.inputValue,
+                    });
+                  } else {
+                    setValue(newValue);
+                  }
+                }}
+                filterOptions={(options, params) => {
+                  const filtered = filter(options, params);
+
+                  const { inputValue } = params;
+                  // Suggest the creation of a new value
+                  const isExisting = options.some(
+                    (option) => inputValue === option.group_name
+                  );
+                  if (inputValue !== "" && !isExisting) {
+                    filtered.push({
+                      inputValue,
+                      group_name: `Add "${inputValue}"`,
+                    });
+                  }
+
+                  return filtered;
+                }}
+                selectOnFocus
+                clearOnBlur
+                handleHomeEndKeys
+                id="free-solo-with-text-demo"
+                options={taskGroups}
+                size="small"
+                getOptionLabel={(option) => {
+                  // Value selected with enter, right from the input
+                  if (typeof option === "string") {
+                    return option;
+                  }
+                  // Add "xxx" option created dynamically
+                  if (option.inputValue) {
+                    return option.inputValue;
+                  }
+                  // Regular option
+                  return option.group_name;
+                }}
+                renderOption={(props, option) => (
+                  <li {...props}>{option.group_name}</li>
+                )}
+                sx={{ width: "100%" }}
+                freeSolo
+                renderInput={(params) => (
+                  <TextField {...params} label="Task Groups" />
+                )}
+              />
+              <div className="d-flex align-items-center justify-content-start mb-3 ml-2">
+                {value && Object.keys(value).length === 1 ? (
+                  <>
+                    <Heading1
+                      color="black"
+                      paddingBlock="0px"
+                      size="1em"
+                      weight="400"
+                      width="fit-content"
+                      marginBotto1m="0px"
+                      JFcontent="left"
+                      className=" m-0 mr-2"
+                    >
+                      Group Color
+                    </Heading1>
+                    <input
+                      type="color"
+                      id="groupColor"
+                      name="groupColor"
+                      value={colorChange}
+                      onChange={(e) => {
+                        handleColorChange(e.target.value);
+                      }}
+                    />
+                  </>
+                ) : null}
+              </div>
+            </>
+          ) : null}
+          <TextField
+            id="outlined-basic"
+            label="Task Name"
+            variant="outlined"
+            size="small"
+            className="textfieldStyles"
+            onChange={(e) => handleTaskName(e)}
+            value={taskName}
+          />
+          <TextField
+            id="BodyText"
+            label="Task Details"
+            multiline
+            minRows="4"
+            rows={4}
+            className="textfieldStyles"
+            value={taskDetails}
+            onChange={handleTaskDetails}
+          />
+          {/* 
+          <Autocomplete
+            onChange={(e, newValue) => {
+              handleTaskGroup(e, newValue);
+            }}
+            inputValue={taskGroupsState}
+
+            disablePortal
+            id=""
+            className="textfieldStyles"
+            style={{ marginRight: "3px" }}
+            size="small"
+            options={StatusList}
+            renderInput={(params) => (
+              <TextField {...params} label="Task Group" />
+            )}
+          /> */}
+          <div className="d-flex justify-content-between textFieldSplit">
+            <Autocomplete
+              disablePortal
+              id="statusFilter"
+              className="textfieldStyles"
+              style={{ marginRight: "3px" }}
+              size="small"
+              options={StatusList}
+              value={status}
+              onChange={(e, option) => {
+                handlestatus(e, option);
+              }}
+              renderInput={(params) => <TextField {...params} label="Status" />}
+            />
+
+            <Autocomplete
+              onChange={(e, option) => {
+                handleSelectedAssignedTasks(e, option);
+              }}
+              multiple
+              size="small"
+              style={{ marginLeft: "3px", width: "100%" }}
+              id="tags-outlined"
+              options={projectUsers}
+              getOptionLabel={(option) => option.username}
+              isOptionEqualToValue={(option, value) =>
+                value.user_id === option.user_id
+              }
+              value={assignedTasks}
+              // defaultValue={projectUsers.find((v) => {
+              //   console.log("v", v);
+              //   return v;
+              // })}
+              // disableCloseOnSelect
+              renderOption={(props, option, { selected }) => (
+                <li {...props}>
+                  <Checkbox
+                    icon={icon}
+                    checkedIcon={checkedIcon}
+                    // style={{ marginRight: 8 }}
+                    checked={selected}
+                  />
+                  {option.username}
+                </li>
+              )}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Assigned To"
+                  placeholder="Users"
+                />
+              )}
+            />
+          </div>
+          <div className="d-flex justify-content-between textFieldSplit">
+            <div
+              className="textfieldStyles datesize "
+              style={{ marginRight: "3px" }}
+            >
+              <LocalizationProvider dateAdapter={AdapterDateFns} className="">
+                <DatePicker
+                  label="Start Date"
+                  size="small"
+                  value={startdate}
+                  onChange={(newValue) => {
+                    setstartdate(newValue);
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            </div>
+
+            <div
+              className="textfieldStyles datesize"
+              style={{ marginLeft: "3px" }}
+            >
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  label="Deadline"
+                  size="small"
+                  value={deadline}
+                  onChange={(newValue) => {
+                    setdeadline(newValue);
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            </div>
+          </div>
+          <div
+            className="pl-2 w-100"
+            style={{ borderBottom: "2px solid #c0c0c07a" }}
+          >
+            <FormControl component="fieldset">
+              <FormLabel component="legend" size="small">
+                Notify
+              </FormLabel>
+              <RadioGroup
+                row
+                aria-label="gender"
+                name="controlled-radio-buttons-group"
+                value={radioButtonValue}
+                onChange={handleRadioButtonChange}
+              >
+                <FormControlLabel
+                  value="By StonAI"
+                  control={<Radio />}
+                  label="By StonAI"
+                />
+
+                <FormControlLabel
+                  value="By Email"
+                  control={<Radio />}
+                  label="By Email"
+                />
+                <FormControlLabel
+                  value="Both"
+                  control={<Radio />}
+                  label="Both"
+                />
+              </RadioGroup>
+            </FormControl>
+            <Collapse in={openAlert}>
+              {radioButtonValue === "By Email" || radioButtonValue === "Both"
+                ? assignedTasks && assignedTasks.length > 0
+                  ? assignedTasks.map((r) => {
+                      if (r.email_address === null) {
+                        return (
+                          <Alert
+                            severity="warning"
+                            action={
+                              <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => {
+                                  setOpenAlert(false);
+                                }}
+                              >
+                                <CloseIcon fontSize="inherit" />
+                              </IconButton>
+                            }
+                            sx={{ mb: 2 }}
+                          >
+                            Following accounts doesn't have email_address
+                            associated with their accounts and won't get
+                            notication by email:{" "}
+                            <strong> {r.username + " "} </strong>
+                          </Alert>
+                        );
+                      }
+                    })
+                  : null
+                : null}
+            </Collapse>
+          </div>
+          <div className="d-flex align-items-end justify-content-end w-100 m-0">
+            {DrawerTitle === "Add Task" ? (
+              <Button
+                variant="outlined"
+                size="small"
+                borderRadius="8px"
+                onClick={handleTaskCreation}
+                sx={{
+                  borderRadius: "8px",
+                  color: "var(--blue)",
+                  fontWeight: "bolder",
+                  borderWidth: "2px",
+                  marginTop: 1,
+                }}
+                disabled={
+                  (taskName && taskName.length === 0) ||
+                  (status && status.length === 0) ||
+                  (startdate && startdate.length === 0) ||
+                  (deadline && deadline.length === 0) ||
+                  (assignedTasks && assignedTasks.length === 0) ||
+                  (taskDetails && taskDetails.length === 0)
+                    ? true
+                    : false
+                }
+                endIcon={<FontAwesomeIcon icon={faPlusCircle} />}
+              >
+                ADD
+              </Button>
+            ) : (
+              <IconButton onClick={() => handleTaskUpdate(taskId)}>
+                <ButtonStyled
+                  paddingInline=".8rem"
+                  paddingBlock="0.3rem"
+                  borderRadius="8px"
+                  width="fit-content"
+                  style={{ cursor: "pointer" }}
+                  className="FiltersClicked m-0"
+                >
+                  UPDATE
+                </ButtonStyled>
+              </IconButton>
+            )}
+          </div>
+        </div>
+        <div className="sideline"></div>
+      </div>
+    </Box>
+  );
+  // -------------------------- Dropdowns --------------------------
+  const handlestatus = (e, option) => {
+    setStatus(option);
+  };
+
+  const handlestatusFilter = (e, option) => {
+    setStatusFilter(option);
+  };
+
+  const handleFilter = () => {
+    setFilterButton(!filterButton);
+    console.log("filterr", filterButton);
+  };
+
+  const handleTaskName = (event) => {
+    setTaskName(event.target.value);
+  };
+
+  const handleTaskNameFilter = (event) => {
+    setTaskNameFilter(event.target.value);
+  };
+
+  const handleTaskDetails = (event) => {
+    setTaskDetails(event.target.value);
+  };
+
+  const handleTaskGroup = (e, option) => {
+    setTaskGroups(option);
+  };
+
+  const handleSelectedAssignedTasks = (e, option) => {
+    console.log("option", option);
+    setAssignedTasks(option);
+  };
+
+  const handleColorChange = (color) => {
+    setcolorChange(color);
+  };
+
+  const handleTaskDelete = async (task_id) => {
+    if (window.confirm("Are you sure you want to delete this file?")) {
+      setLoading(false);
+
+      try {
+        var res = await axios.delete(url + "/Tasks/deleteTasks" + task_id, {
+          headers: { token: user.token },
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      // Do nothing!
+      console.log("Delete canceled");
+    }
+  };
+
+  // ============================== MUI Table ==============================
+  // -----------------------------------------------------------------------
+
+  function Row(props) {
+    const tasks = tasksDataFromDB.map((t) => {
+      return {
+        user_id: t.user_id,
+        task_id: t.task_id,
+        group_name: t.group_name,
+        task_name: t.task_name,
+        task_status: t.task_status,
+        task_discription: t.task_details,
+        task_assigned_to: t.username,
+        task_deadline: t.task_deadline,
+        group_color: t.group_color,
+        email_address: t.email_address,
+      };
+    });
+
+    const tasksAssigned = tasksDataFromDB.map((t) => {
+      return {
+        user_id: t.user_id,
+        task_id: t.task_id,
+        group_name: t.group_name,
+        task_name: t.task_name,
+        task_status: t.task_status,
+        task_discription: t.task_details,
+        task_assigned_to: t.username,
+        task_deadline: t.task_deadline,
+        group_color: t.group_color,
+      };
+    });
+
+    const remDuplicates = [
+      ...new Map(tasksDataFromDB.map((v) => [v.task_id, v])).values(),
+    ];
+
+    const remDuplicatesAssigned = [
+      ...new Map(assignedTasksDataFromDB.map((v) => [v.task_id, v])).values(),
+    ];
+
+    tasks.map((a) => {
+      return {
+        user_id: a.user_id,
+        username: a.task_assigned_to,
+        task_id: a.task_id,
+        email_address: a.email_address,
+      };
+    });
+
+    taskAllUSers = tasks.map((a) => {
+      return {
+        user_id: a.user_id,
+        username: a.task_assigned_to,
+        task_id: a.task_id,
+      };
+    });
+    taskAllUSersAssigned = tasksAssigned.map((a) => {
+      return {
+        user_id: a.user_id,
+        username: a.task_assigned_to,
+        task_id: a.task_id,
+        email_address: a.email_address,
+      };
+    });
+
+    const { row, title } = props;
+    const [open, setOpen] = React.useState(true);
+    const [anchorElMenu, setAnchorElMenu] = React.useState(null);
+    const [ChangedGroupName, setChangedGroupName] = React.useState("");
+
+    const [colorChangeTaskGroups, setColorChangeTaskGroups] =
+      React.useState("");
+
+    const handleChangedGroupName = (event) => {
+      setChangedGroupName(event.target.value);
+    };
+    const handleColorChangeTaskGroups = (event) => {
+      setColorChangeTaskGroups(event.target.value);
+    };
+    const openMenu = Boolean(anchorElMenu);
+    const handleClick = (event, name, color) => {
+      setChangedGroupName(name);
+      setColorChangeTaskGroups(color);
+      setAnchorElMenu(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorElMenu(null);
+    };
+
+    const handleGroupUpdate = async (group_id) => {
+      console.log(
+        "ASDsacas",
+        ChangedGroupName,
+        group_id,
+        colorChangeTaskGroups
+      );
+      try {
+        var res = await axios.post(
+          url + "/Tasks/updateTaskGroup",
+          {
+            group_name: ChangedGroupName,
+            group_color: colorChangeTaskGroups,
+            group_id: group_id,
+          },
+          {
+            headers: { token: user.token },
+          }
+        );
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+
+    const handleTaskGroupDelete = async (group_id) => {
+      console.log("groupdel", group_id);
+      setLoading(false);
+
+      if (
+        window.confirm(
+          "Are you sure you want to delete this group? All the tasks associated with this task group will alse get deleted"
+        )
+      ) {
+        try {
+          var res = await axios.delete(url + "/Tasks/groupDelete" + group_id, {
+            headers: { token: user.token },
+          });
+          handleClickVariant("success", "Task group deleted Sucessfully");
+        } catch (e) {
+          console.log(e);
+        }
+      } else {
+        // Do nothing!
+        console.log("Delete canceled");
+      }
+    };
+
+    const handleGroupOpen = async (group_id) => {
+      setOpen(!open);
+
+      try {
+        var res = await axios.post(
+          url + "/Tasks/updateTaskGroupStatus",
+          {
+            group_id: group_id,
+          },
+          {
+            headers: { token: user.token },
+          }
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    console.log("taskGroupsAssigned", taskGroupsAssigned);
+    return (
+      <React.Fragment>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorElMenu}
+          open={openMenu}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <Grid container>
+            <Grid item md={12} sx={{ padding: 2 }}>
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined-basic"
+                label="Task Group"
+                variant="outlined"
+                size="small"
+                className="textfieldStyles"
+                onChange={(e) => handleChangedGroupName(e)}
+                value={ChangedGroupName}
+              />
+            </Grid>
+            <Grid item md={12}>
+              {/* <Heading1
+                color="black"
+                paddingBlock="0px"
+                size="1em"
+                weight="400"
+                width="fit-content"
+                marginBotto1m="0px"
+                JFcontent="left"
+                className=" m-0 mr-2"
+              >
+                Group Color
+              </Heading1>  */}
+              <div style={{ textAlign: "center" }}>
+                <input
+                  type="color"
+                  id="groupColor"
+                  name="groupColor"
+                  value={colorChangeTaskGroups}
+                  onChange={(e) => {
+                    handleColorChangeTaskGroups(e);
+                  }}
+                />
+              </div>
+            </Grid>
+
+            <Grid item md={12} style={{ textAlign: "right", marginTop: 10 }}>
+              <Divider />
+              <IconButton onClick={() => handleGroupUpdate(row.group_id)}>
+                <ButtonStyled
+                  paddingInline=".8rem"
+                  paddingBlock="0.3rem"
+                  borderRadius="8px"
+                  width="fit-content"
+                  style={{ cursor: "pointer" }}
+                  className="FiltersClicked m-0"
+                >
+                  UPDATE
+                </ButtonStyled>
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Menu>
+        {!isLoading ? (
+          <>
+            <div className="d-flex flex-column">
+              {/* <Typography variant="h1" width={650}>
+                <Skeleton />
+              </Typography> */}
+
+              <div className="NotificationContainer">
+                <Skeleton variant="circular" width={40} height={40} />
+                <div className="p-1">
+                  <div style={{ width: 200 }}>
+                    <Skeleton width={600} height={30} />
+                  </div>
+                </div>
+              </div>
+              <div className="">
+                <hr className="NotificationDivider" />
+              </div>
+            </div>
+          </>
+        ) : title !== "assigned" ? (
+          <>
+            <TableRow sx={{ "& > *": {} }} className="my-3 ">
+              <TableCell
+                className=" TableHeadderRow"
+                style={{ cursor: "pointer" }}
+              >
+                {" "}
+                {/* ============================================ cell icon */}
+                <IconButton
+                  aria-label="expand row"
+                  size="small"
+                  className="tableIcon"
+                  style={{ background: row.group_color }}
+                  onClick={() => handleGroupOpen(row.group_id)}
+                >
+                  {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                </IconButton>
+                <Heading1
+                  color="grey"
+                  paddingInline="10px"
+                  paddingBlock=""
+                  size="1.2rem"
+                  weight="500"
+                  JFcontent="left"
+                  marginBottom="0px"
+                  style={{
+                    fontWeight: !row.is_read ? "bolder" : "normal",
+                  }}
+                >
+                  {row.group_name}
+                </Heading1>
+                <div style={{ textAlign: "right" }}>
+                  <IconButton
+                    onClick={(event) =>
+                      handleClick(event, row.group_name, row.group_color)
+                    }
+                  >
+                    <EditIcon />
+                  </IconButton>
+                </div>
+                <div style={{ textAlign: "right" }}>
+                  <IconButton
+                    onClick={() => handleTaskGroupDelete(row.group_id)}
+                  >
+                    <DeleteForeverIcon />
+                  </IconButton>
+                </div>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                style={{
+                  paddingBottom: 0,
+                  paddingTop: 0,
+                  marginBottom: "10px",
+                }}
+                colSpan={6}
+              >
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                  <Box sx={{ margin: 1, paddingBottom: 5 }}>
+                    <Table size="small" aria-label="purchases">
+                      <TableHead>
+                        <TableRow
+                          className="CellDivision"
+                          style={{ borderLeft: "4px solid " + colorChange }}
+                        >
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Task
+                            </Heading1>
+                          </td>
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Status
+                            </Heading1>
+                          </td>
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Description
+                            </Heading1>
+                          </td>
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Assigned To
+                            </Heading1>
+                          </td>
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Deadline
+                            </Heading1>
+                          </td>
+                          <td></td>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {remDuplicates.map((data, i) => {
+                          if (data.group_id === row.group_id) {
+                            return (
+                              <TableRow
+                                className="CellDivision"
+                                style={{
+                                  borderLeft: "4px solid " + data.group_color,
+                                }}
+                                key={i}
+                              >
+                                <td
+                                  style={{
+                                    borderLeft:
+                                      "4px solid " + data.group_color + "",
+                                    borderBottom: "2px solid silver",
+                                  }}
+                                >
+                                  {" "}
+                                  <Heading1 className="tableCellText">
+                                    {" "}
+                                    {data.task_name}{" "}
+                                  </Heading1>{" "}
+                                </td>
+                                <td
+                                  style={{ borderBottom: "2px solid silver" }}
+                                >
+                                  <Heading1 className="tableCellText">
+                                    {" "}
+                                    {data.task_status}
+                                  </Heading1>{" "}
+                                </td>
+                                <td
+                                  style={{ borderBottom: "2px solid silver" }}
+                                >
+                                  <Heading1 className="tableCellText">
+                                    {data.task_details}
+                                  </Heading1>
+                                </td>
+                                <td
+                                  style={{
+                                    borderBottom: "2px solid silver",
+                                  }}
+                                  key={i}
+                                >
+                                  <Heading1 className="tableCellText">
+                                    <AvatarGroup max={4}>
+                                      {taskAllUSers.map((t) =>
+                                        t.task_id === data.task_id ? (
+                                          <Avatar
+                                            alt={t.username}
+                                            sx={{
+                                              bgcolor: data.group_color,
+                                              width: "1.5em",
+                                              height: "1.5em",
+                                            }}
+                                          >
+                                            {t.username?.charAt(0)}
+                                          </Avatar>
+                                        ) : null
+                                      )}
+                                    </AvatarGroup>
+                                  </Heading1>
+                                </td>
+                                <td
+                                  style={{ borderBottom: "2px solid silver" }}
+                                >
+                                  <Heading1 className="tableCellText">
+                                    {data.task_deadline?.substring(0, 10)}
+                                  </Heading1>
+                                </td>
+                                <td
+                                  style={{ borderBottom: "2px solid silver" }}
+                                >
+                                  <IconButton
+                                    onClick={() =>
+                                      handleTaskDelete(data.task_id)
+                                    }
+                                  >
+                                    <DeleteForeverIcon />
+                                  </IconButton>
+                                  <IconButton
+                                    onClick={toggleDrawerUpdate(
+                                      anchor,
+                                      true,
+                                      "Edit Task",
+                                      data.task_name,
+                                      data.task_status,
+                                      data.task_details,
+                                      data.task_deadline,
+                                      data.task_startdate,
+                                      data.task_id,
+                                      "mytask"
+                                    )}
+                                  >
+                                    <EditIcon />
+                                  </IconButton>
+                                </td>
+                              </TableRow>
+                            );
+                          }
+                        })}
+                      </TableBody>
+                    </Table>
+                  </Box>
+                </Collapse>
+              </TableCell>
+            </TableRow>
+          </>
+        ) : (
+          <>
+            <TableRow sx={{ "& > *": {} }} className="my-3 ">
+              <TableCell
+                className=" TableHeadderRow"
+                style={{ cursor: "pointer" }}
+              >
+                {/* ============================================ cell icon */}
+                <IconButton
+                  aria-label="expand row"
+                  size="small"
+                  className="tableIcon"
+                  style={{ background: row.group_color }}
+                  onClick={() => handleGroupOpen(row.group_id)}
+                >
+                  {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                </IconButton>
+                <Heading1
+                  color="grey"
+                  paddingInline="10px"
+                  paddingBlock=""
+                  size="1.2rem"
+                  weight="500"
+                  JFcontent="left"
+                  marginBottom="0px"
+                  style={{
+                    fontWeight: !row.is_read ? "bolder" : "normal",
+                  }}
+                >
+                  {row.group_name}
+                </Heading1>
+                <div style={{ textAlign: "right" }}>
+                  <IconButton
+                    onClick={(event) =>
+                      handleClick(event, row.group_name, row.group_color)
+                    }
+                  >
+                    <EditIcon />
+                  </IconButton>
+                </div>
+
+                <div style={{ textAlign: "right" }}>
+                  <IconButton
+                    onClick={() => handleTaskGroupDelete(row.group_id)}
+                  >
+                    <DeleteForeverIcon />
+                  </IconButton>
+                </div>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell
+                style={{
+                  paddingBottom: 0,
+                  paddingTop: 0,
+                  marginBottom: "10px",
+                }}
+                colSpan={6}
+              >
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                  <Box sx={{ margin: 1, paddingBottom: 5 }}>
+                    <Table size="small" aria-label="purchases">
+                      <TableHead>
+                        <TableRow
+                          className="CellDivision"
+                          style={{ borderLeft: "4px solid " + colorChange }}
+                        >
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Task
+                            </Heading1>
+                          </td>
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Status
+                            </Heading1>
+                          </td>
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Description
+                            </Heading1>
+                          </td>
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Assigned To
+                            </Heading1>
+                          </td>
+                          <td>
+                            <Heading1
+                              color="black"
+                              paddingInline="5px"
+                              paddingBlock="5px"
+                              size="1.1rem"
+                              weight="500"
+                              JFcontent="left"
+                              marginBottom="4px"
+                            >
+                              Deadline
+                            </Heading1>
+                          </td>
+                          <td></td>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {remDuplicatesAssigned.map((data, i) => {
+                          if (data.group_name === row.group_name) {
+                            return (
+                              <TableRow
+                                className="CellDivision"
+                                style={{
+                                  borderLeft: "4px solid " + data.group_color,
+                                }}
+                                key={i}
+                              >
+                                <td
+                                  style={{
+                                    borderLeft:
+                                      "4px solid " + data.group_color + "",
+                                    borderBottom: "2px solid silver",
+                                  }}
+                                >
+                                  {" "}
+                                  <Heading1 className="tableCellText">
+                                    {" "}
+                                    {data.task_name}{" "}
+                                  </Heading1>{" "}
+                                </td>
+                                <td
+                                  style={{ borderBottom: "2px solid silver" }}
+                                >
+                                  <Heading1 className="tableCellText">
+                                    {" "}
+                                    {data.task_status}
+                                  </Heading1>{" "}
+                                </td>
+                                <td
+                                  style={{ borderBottom: "2px solid silver" }}
+                                >
+                                  <Heading1 className="tableCellText">
+                                    {data.task_details}
+                                  </Heading1>
+                                </td>
+                                <td
+                                  style={{
+                                    borderBottom: "2px solid silver",
+                                  }}
+                                  key={i}
+                                >
+                                  <Heading1 className="tableCellText">
+                                    <AvatarGroup max={4}>
+                                      {taskAllUSersAssigned.map((t) =>
+                                        t.task_id === data.task_id ? (
+                                          <Avatar
+                                            alt={t.username}
+                                            sx={{
+                                              bgcolor: data.group_color,
+                                              width: "1.5em",
+                                              height: "1.5em",
+                                            }}
+                                          >
+                                            {t.username?.charAt(0)}
+                                          </Avatar>
+                                        ) : null
+                                      )}
+                                    </AvatarGroup>
+                                  </Heading1>
+                                </td>
+                                <td
+                                  style={{ borderBottom: "2px solid silver" }}
+                                >
+                                  <Heading1 className="tableCellText">
+                                    {data.task_deadline?.substring(0, 10)}
+                                  </Heading1>
+                                </td>
+                                <td
+                                  style={{ borderBottom: "2px solid silver" }}
+                                >
+                                  <IconButton
+                                    onClick={() =>
+                                      handleTaskDelete(data.task_id)
+                                    }
+                                  >
+                                    <DeleteForeverIcon />
+                                  </IconButton>
+                                  <IconButton
+                                    onClick={toggleDrawerUpdate(
+                                      anchor,
+                                      true,
+                                      "Edit Task",
+                                      data.task_name,
+                                      data.task_status,
+                                      data.task_details,
+                                      data.task_deadline,
+                                      data.task_startdate,
+                                      data.task_id,
+                                      "assignedtask"
+                                    )}
+                                  >
+                                    <EditIcon />
+                                  </IconButton>
+                                </td>
+                              </TableRow>
+                            );
+                          }
+                        })}
+                      </TableBody>
+                    </Table>
+                  </Box>
+                </Collapse>
+              </TableCell>
+            </TableRow>
+          </>
+        )}
+      </React.Fragment>
+    );
+  }
+
+  Row.propTypes = {
+    row: PropTypes.shape({
+      history: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    }).isRequired,
+  };
+
+  // -----------------------------------------------------------------------
+  // =======================================================================
+
+  const renderSwitch = (param) => {
+    console.log("tasksDataFromDB", tasksDataFromDB);
+    taskGroups = [
+      ...new Map(
+        tasksDataFromDB.map((item) => [item["group_name"], item])
+      ).values(),
+    ];
+
+    taskGroupsAssigned = [
+      ...new Map(
+        assignedTasksDataFromDB.map((item) => [item["group_name"], item])
+      ).values(),
+    ];
+
+    switch (param) {
+      case "one":
+        return (
+          <div className="mytasks">
+            {/* //============================================================================== */}
+            {/* ----------------------------------- MUI My Tasks Table ----------------------------------- */}
+            {/* ================================================================================ */}
+
+            <TableContainer component={Paper}>
+              <Table aria-label="collapsible table" className="">
+                <TableHead className="">
+                  <TableRow>
+                    <TableCell className="">
+                      <Heading1
+                        color="var(--blue)"
+                        paddingInline="10px"
+                        paddingBlock=""
+                        size="1.5rem"
+                        weight="600"
+                        JFcontent="left"
+                        marginBottom="0px"
+                        style={{ justifyContent: "space-between" }}
+                      >
+                        My Tasks
+                        <Fab
+                          color="primary"
+                          aria-label="add"
+                          size="small"
+                          onClick={toggleDrawer(anchor, true, "Add Task")}
+                        >
+                          <AddIcon />
+                        </Fab>
+                      </Heading1>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {taskGroups.map((row, i) => (
+                    <Row key={i} row={row} />
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
+        );
+      case "two":
+        return (
+          <div className="mytasks">
+            {/* //============================================================================== */}
+            {/* ----------------------------------- MUI Assigned Task Table ----------------------------------- */}
+            {/* ================================================================================ */}
+
+            <TableContainer component={Paper}>
+              <Table aria-label="collapsible table">
+                <TableHead className="">
+                  <TableRow>
+                    <TableCell>
+                      <Heading1
+                        color="var(--blue)"
+                        paddingInline="10px"
+                        paddingBlock=""
+                        size="1.5rem"
+                        weight="600"
+                        JFcontent="left"
+                        marginBottom="0px"
+                        style={{ justifyContent: "space-between" }}
+                      >
+                        Assigned Tasks
+                        <Fab
+                          color="primary"
+                          aria-label="add"
+                          size="small"
+                          onClick={toggleDrawer(anchor, true, "Add Task")}
+                        >
+                          <AddIcon />
+                        </Fab>
+                      </Heading1>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {taskGroupsAssigned.map((row, i) => (
+                    <Row key={i} row={row} title="assigned" />
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
+        );
+
+      default:
+        return <Grid container></Grid>;
+    }
+  };
+  // ============================================================================
+  console.log("haroon", tasksDataFromDB);
+  return (
+    <div>
+      {isLoading ? (
+        tasksDataFromDB && tasksDataFromDB.length > 0 ? (
+          <>
+            <Helmet>
+              <title>WorkSpace | StonAi</title>
+            </Helmet>
+            <Heading1
+              color="var(--blue)"
+              paddingInline="5px"
+              paddingBlock=".6rem"
+              size="2.6rem"
+              weight="500"
+              marginBotto1m="2rem"
+              JFcontent="left"
+            >
+              Tasks
+            </Heading1>
+
+            <Box
+              sx={{
+                backgroundColor: "background.default",
+                minHeight: "100%",
+                py: 3,
+                marginBottom: "3rem",
+              }}
+            >
+              <Grid container direction="column" rowSpacing={2}>
+                <Grid container item>
+                  <Grid item md={6}>
+                    <Tabs
+                      value={tabValue}
+                      onChange={handleTabChange}
+                      textColor="primary"
+                      indicatorColor="primary"
+                      aria-label="secondary tabs example"
+                    >
+                      <Tab value="one" label="My Tasks" />
+                      <Tab value="two" label="Assigned Tasks" />
+                    </Tabs>
+                  </Grid>
+                  <Grid
+                    item
+                    md={6}
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      paddingRight: "30px",
+                    }}
+                  ></Grid>
+                </Grid>
+
+                <Grid item style={{}}>
+                  {/* ************************************** FILTER ************************************** */}
+                  <Fade right>
+                    <div
+                      className={`${
+                        FiltersClicked
+                          ? "filtersContainer filterHeight "
+                          : "filtersContainer"
+                      }`}
+                    >
+                      <Grid container direction="column" spacing={0.5}>
+                        <Grid
+                          container
+                          direction="row"
+                          spacing={0.5}
+                          alignItems="center"
+                        >
+                          <Grid item>
+                            <TextField
+                              id="searchbox"
+                              label="Search"
+                              type="search"
+                              size="small"
+                              style={{ width: "20rem" }}
+                              className="searchbox"
+                            />
+                          </Grid>
+                          <Grid item>
+                            <ButtonStyled
+                              paddingInline=".8rem"
+                              paddingBlock="0.3rem"
+                              borderRadius="8px"
+                              width="fit-content"
+                              style={{ cursor: "pointer" }}
+                              className={`${
+                                FiltersClicked
+                                  ? "FiltersClicked mx-1"
+                                  : "FiltersUnclicked mx-1"
+                              }`}
+                              onClick={(e) => {
+                                setFiltersClicked(!FiltersClicked);
+                              }}
+                            >
+                              Filters
+                            </ButtonStyled>
+                            {/* <SwipeableDrawer
+                        anchor={anchor}
+                        open={state[anchor]}
+                        onClose={toggleDrawer(anchor, false)}
+                        onOpen={toggleDrawer(anchor, true)}
+                      >
+                        {list(anchor)}
+                      </SwipeableDrawer> */}
+                          </Grid>
+
+                          <Grid item>
+                            {
+                              <React.Fragment key={anchor}>
+                                <Button
+                                  onClick={toggleDrawer(
+                                    anchor,
+                                    true,
+                                    "Add Task"
+                                  )}
+                                  className="FiltersUnclicked AddButton mx-1"
+                                >
+                                  Add Task
+                                </Button>
+
+                                <SwipeableDrawer
+                                  anchor={anchor}
+                                  open={state[anchor]}
+                                  onClose={toggleDrawerClose(anchor, false)}
+                                  onOpen={toggleDrawer(anchor, true)}
+                                >
+                                  {list(anchor)}
+                                </SwipeableDrawer>
+                              </React.Fragment>
+                            }
+                          </Grid>
+                        </Grid>
+
+                        <Grid>
+                          {FiltersClicked && (
+                            <div className="FiltersDiv">
+                              <div
+                                className="fadein"
+                                style={{
+                                  marginRight: "10px",
+                                  animationDelay: "0.2s",
+                                  width: 150,
+                                }}
+                              >
+                                <Autocomplete
+                                  onChange={(event, newValue) => {
+                                    if (typeof newValue === "string") {
+                                      setValueFilter({
+                                        group_name: newValue,
+                                      });
+                                    } else if (
+                                      newValue &&
+                                      newValue.inputValue
+                                    ) {
+                                      // Create a new value from the user input
+                                      setValueFilter({
+                                        group_name: newValue.inputValue,
+                                      });
+                                    } else {
+                                      setValueFilter(newValue);
+                                    }
+                                  }}
+                                  filterOptions={(options, params) => {
+                                    const filtered = filter(options, params);
+
+                                    const { inputValue } = params;
+                                    // Suggest the creation of a new value
+                                    const isExisting = options.some(
+                                      (option) =>
+                                        inputValue === option.group_name
+                                    );
+                                    if (inputValue !== "" && !isExisting) {
+                                      filtered.push({
+                                        inputValue,
+                                        group_name: `Add "${inputValue}"`,
+                                      });
+                                    }
+
+                                    return filtered;
+                                  }}
+                                  selectOnFocus
+                                  clearOnBlur
+                                  handleHomeEndKeys
+                                  id="free-solo-with-text-demo"
+                                  options={taskGroups}
+                                  size="small"
+                                  getOptionLabel={(option) => {
+                                    // Value selected with enter, right from the input
+                                    if (typeof option === "string") {
+                                      return option;
+                                    }
+                                    // Add "xxx" option created dynamically
+                                    if (option.inputValue) {
+                                      return option.inputValue;
+                                    }
+                                    // Regular option
+                                    return option.group_name;
+                                  }}
+                                  renderOption={(props, option) => (
+                                    <li {...props}>{option.group_name}</li>
+                                  )}
+                                  sx={{ width: "100%" }}
+                                  freeSolo
+                                  renderInput={(params) => (
+                                    <TextField
+                                      {...params}
+                                      label="Task Groups"
+                                    />
+                                  )}
+                                />
+                              </div>
+                              <div
+                                className="fadein"
+                                style={{
+                                  marginRight: "10px",
+                                  animationDelay: "0.2s",
+                                  width: 150,
+                                }}
+                              >
+                                <TextField
+                                  id="outlined-basic"
+                                  label="Task Name"
+                                  variant="outlined"
+                                  size="small"
+                                  className="textfieldStyles"
+                                  onChange={(e) => handleTaskNameFilter(e)}
+                                  value={taskNameFilter}
+                                />
+                              </div>
+
+                              <div
+                                className="fadein"
+                                style={{
+                                  marginRight: "10px",
+                                  animationDelay: "0.2s",
+                                  width: 150,
+                                }}
+                              >
+                                <Autocomplete
+                                  disablePortal
+                                  id="statusFilter"
+                                  className="textfieldStyles"
+                                  style={{ marginRight: "3px" }}
+                                  size="small"
+                                  options={StatusList}
+                                  value={statusFilter}
+                                  onChange={(e, option) => {
+                                    handlestatusFilter(e, option);
+                                  }}
+                                  renderInput={(params) => (
+                                    <TextField {...params} label="Status" />
+                                  )}
+                                />
+                              </div>
+
+                              <div
+                                className="fadein"
+                                style={{
+                                  marginRight: "10px",
+                                  animationDelay: "0.4s",
+                                  width: 150,
+                                }}
+                              >
+                                <Box sx={{ minWidth: 120 }}>
+                                  <div
+                                    className="textfieldStyles datesize "
+                                    style={{ marginRight: "3px" }}
+                                  >
+                                    <LocalizationProvider
+                                      dateAdapter={AdapterDateFns}
+                                      className=""
+                                    >
+                                      <DatePicker
+                                        label="Start Date"
+                                        size="small"
+                                        value={startdateFilter}
+                                        onChange={(newValue) => {
+                                          setstartdateFilter(newValue);
+                                        }}
+                                        renderInput={(params) => (
+                                          <TextField {...params} />
+                                        )}
+                                      />
+                                    </LocalizationProvider>
+                                  </div>
+                                </Box>
+                              </div>
+
+                              <div
+                                className="fadein"
+                                style={{
+                                  marginRight: "10px",
+                                  animationDelay: ".6s",
+                                  width: 150,
+                                }}
+                              >
+                                <div
+                                  className="textfieldStyles datesize"
+                                  style={{ marginLeft: "3px" }}
+                                >
+                                  <LocalizationProvider
+                                    dateAdapter={AdapterDateFns}
+                                  >
+                                    <DatePicker
+                                      label="Deadline"
+                                      size="small"
+                                      value={deadlineFilter}
+                                      onChange={(newValue) => {
+                                        setdeadlineFilter(newValue);
+                                      }}
+                                      renderInput={(params) => (
+                                        <TextField {...params} />
+                                      )}
+                                    />
+                                  </LocalizationProvider>
+                                </div>
+                              </div>
+                              <div
+                                className="fadein"
+                                style={{
+                                  marginRight: "10px",
+                                  animationDelay: ".6s",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  bgcolor: "black",
+                                  width: "100%",
+                                }}
+                              >
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  borderRadius="8px"
+                                  onClick={handleFilter}
+                                  sx={{
+                                    borderRadius: "8px",
+                                    color: "var(--blue)",
+                                    fontWeight: "bolder",
+                                    borderWidth: "2px",
+                                    marginTop: 1,
+                                  }}
+                                  disabled={false}
+                                  endIcon={<FontAwesomeIcon icon={faFilter} />}
+                                >
+                                  FILTER
+                                </Button>
+                              </div>
+                            </div>
+                          )}
+                        </Grid>
+                      </Grid>
+                    </div>
+                  </Fade>
+
+                  <Container maxWidth={false}>
+                    {renderSwitch(tabValue)}
+                  </Container>
+                </Grid>
+              </Grid>
+            </Box>
+          </>
+        ) : (
+          <>
+            <h1>dsadasdasfinfein</h1>
+          </>
+        )
+      ) : null}
+    </div>
+  );
+}
+
+const top100Films = [
+  { title: "The Shawshank Redemption" },
+  { title: "The Godfather" },
+];
+
+const StatusList = [
+  { label: "In Process" },
+  { label: "Completed" },
+  { label: "Delayed" },
+  { label: "Canceled" },
+];

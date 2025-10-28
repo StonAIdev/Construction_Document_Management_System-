@@ -1,0 +1,244 @@
+.aboutusContainer {
+  background: white;
+}
+
+.aboutusHeader {
+  min-height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  background-color: var(--orange);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("https://wallpaperaccess.com/full/2577689.jpg");
+  background-image: url("");
+  background-image: url("https://image.freepik.com/free-vector/big-data-visualization-futuristic-infographic-information-aesthetic-design-visual-data-complexity-complex-data-threads-graphic-visualization-abstract-data-graph_1217-4677.jpg");
+  background-image: url("https://events.3ds.com/sites/default/files/track-3-smart-construction-hero-banner.jpg");
+
+  /* 
+  background-blend-mode: overlay;
+  background-blend-mode: multiply; */
+  background-position-y: 45%;
+  background-size: 100% 215%;
+  background-size: cover;
+}
+
+.headertitle {
+  padding-left: 90px;
+  width: 50% !important;
+}
+
+.Hidetext{
+    display: block !important;;
+}
+.Showtext{
+    display: none !important;
+}
+
+/* =================================================================== */
+.SplitContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.SplitContainer h2 {
+    padding-inline: 10px;
+    margin-inline: auto;
+}
+
+.AboutImages {
+  max-width: 500px;
+  max-height: 300px;
+  object-fit: cover;
+  margin-inline: 20px;
+  border-radius: 8px;
+}
+
+/* ==================================================================== */
+
+.ContactUsContainer {
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ContactMain {
+  background: white;
+  width: 100%;
+  min-height: 20vh;
+  border: 2px solid silver;
+  border-radius: 8px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-block: 2.5em;
+  margin-bottom: 2em;
+}
+
+.GetinTouchCard {
+  padding-inline: 20px;
+  margin-left: 20px;
+}
+
+.textfieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.SendButton {
+  margin-block: 1em;
+  transition: 0.2s ease;
+}
+
+.SendButton:hover {
+  transition: 0.2s ease;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 16px;
+  border-width: 3px;
+}
+
+.ContactCard {
+  background-image: linear-gradient(to right bottom, #3a75b9, #2a417c);
+  color: white !important;
+  width: 370px;
+  height: 430px;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid var(--orange);
+  margin-left: -2.5em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.ContactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 30px;
+  padding-inline: 25px;
+  opacity: 0.8;
+}
+
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.TeamsContainer {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.TeamCardContainer {
+  display: flex;
+  justify-content: center;  
+  flex-wrap: wrap;
+
+}
+
+.TeamCard {
+  /* margin: 10px; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.TeamImage {
+  border: 2px solid rgba(192, 192, 192, 0.555);
+  border: 5px solid white;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin-bottom: 1em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  object-fit: cover;
+}
+
+/* ======================================================================== */
+@media only screen and (max-width: 1259px) {
+  .aboutusHeader {
+    background-size: cover;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  .ContactMain {
+    flex-direction: column;
+    padding-inline: 1em;
+    gap: 35px;
+  }
+
+  .ContactCard {
+    margin: 0px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .ContactCard {
+    width: 100%;
+    padding-inline: 5px;
+  }
+
+  .AboutImages {
+    width: 280px;
+    height: 150px;
+  }
+
+
+}
+
+@media only screen and (max-width: 670px) {
+  .aboutusHeader {
+    min-height: 20vh;
+    background-position-y: 45%;
+  }
+
+  .headertitle {
+    padding: 15px !important;
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .Hidetext{
+    display: none !important;;
+}
+.Showtext{
+    display: block !important;;
+}
+}
+
+@media only screen and (max-width: 1000px) {
+  .SplitContainer {
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  .SplitContainer div {
+    max-width: 100% !important;
+  }
+
+  .colreverse{
+    flex-direction: column-reverse !important;
+  }
+
+  .AboutImages {
+    max-width: 400px;
+    max-height: 250px;
+    margin-inline: auto;
+  }
+
+
+}

@@ -1,0 +1,152 @@
+.DocExtractionTextField {
+  margin-block: 8px !important;
+  min-height: 2.3em !important;
+  background-color: #fbfbfb;
+  margin-top: 0px !important;
+
+}
+
+.DocExtractionTextField fieldset {
+  border-radius: 8px !important;
+  min-height: 2.3em !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px 1px;
+}
+
+.DocExtractionDate {
+  margin-block: 5px !important;
+  min-height: 2.3em !important;
+}
+.DocExtractionDate div {
+  width: 400px;
+}
+.DocExtractionDate button {
+  display: flex !important;
+  margin-left: auto !important;
+}
+.DocExtractionDate fieldset {
+  border-radius: 8px !important;
+  min-height: 2.3em !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px 1px;
+}
+
+.DocmappingtextField {
+  width: 100%;
+  margin-block: 5px !important;
+  min-height: 2.3em !important;
+}
+.DocmappingtextField div {
+  width: 100%;
+}
+.DocmappingtextField button {
+  display: flex !important;
+  margin-left: auto !important;
+}
+.DocmappingtextField fieldset {
+  border-radius: 8px !important;
+  min-height: 2.3em !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px 1px;
+}
+
+.drawingline {
+  height: 10px !important;
+  border-color: #0000004d !important;
+  opacity: 1 !important;
+  width: 100% !important;
+}
+
+.mappingSubConyainer {
+  width: 100%;
+  overflow-y: auto;
+  max-height: 69vh;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px 2px;
+}
+
+.mappingChipscomtainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.mappingChips {
+  background-color: var(--blue) !important;
+  border: 2px solid var(--blue) !important;
+  color: white !important;
+  cursor: pointer !important;
+  padding-block: 3px !important;
+  border-radius: 8px !important;
+  width: 98% !important;
+  align-self: center !important;
+}
+
+.mappingChips:hover {
+  background-color: white !important;
+  color: var(--blue) !important;
+  border: 2px solid var(--blue) !important;
+}
+
+.SubmittalColor {
+  height: 34px;
+  width: 5px;
+  margin-right: 6px;
+  border-radius: 5px;
+}
+
+.SubmittalColor_Large{
+  height: auto;
+  width: 5px;
+  margin-right: 6px;
+  border-radius: 5px;
+}
+
+.ConditionalKey{
+  display: flex;
+  gap: 8px;
+  margin-block: 6px;
+  margin-bottom: 20px ;
+}
+
+.ConditionalKey div{
+  border-radius: 5px;
+  padding-inline:8px;
+  font-size: 14px;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.ConditionalKey div svg{
+  font-size: 19px !important;
+  padding-left: 0px;
+  transition: .3s ease-in-out;
+}
+
+.ConditionalKey div:nth-child(2) svg{
+  transform: rotate(-45deg);
+}
+
+.ConditionalKey div:nth-child(3) svg{
+  transform: rotate(-135deg);
+}
+
+.ConditionalKey div:hover .icon1 {
+  transform: rotate(-0deg) translateY(3px);
+}
+
+.ConditionalKey div:hover .icon2 {
+  transform: rotate(-45deg) translateY(3px);
+}
+
+.ConditionalKey div:hover .icon3 {
+  transform: rotate(-135deg) translateY(3px)
+}
+
+@media only screen and (max-width: 1537px) {
+  .ConditionalKey div{
+    font-size: 10px;
+    width: 120px;
+
+  }
+}

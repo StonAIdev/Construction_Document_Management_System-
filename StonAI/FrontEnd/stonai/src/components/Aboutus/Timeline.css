@@ -1,0 +1,120 @@
+.TimelineParrent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 300px;
+}
+
+.textappear {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+  transform: translateY(-3px);
+}
+
+.circleHover:hover span {
+  transform: scale(1.2);
+}
+
+.circleHover:hover + .textappear {
+  transform: translateX(3px);
+  opacity: 1;
+  z-index: 20;
+}
+
+.TimelineCircle {
+  transition: 0.1s ease;
+}
+
+.rotatetext {
+  transform: rotate(90deg) !important;
+  /* display: flex; */
+  justify-content: center;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.rotatwonly {
+  transform: rotate(90deg) !important;
+}
+
+.rotaterelative {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-inline: 69px !important;
+}
+.rotateabsolute {
+  position: absolute;
+  transform: rotate(90deg) !important;
+}
+
+.timelineWidth {
+  width: 196px !important;
+  transform: rotate(270deg) scale(1.5) !important;
+  margin: auto !important;
+}
+
+@media only screen and (max-width: 1139px) {
+  .timelineWidth {
+    transform: rotate(270deg) scale(1.2) !important;
+  }
+}
+
+@media only screen and (max-width: 986px) {
+  .timelineWidth {
+    transform: rotate(0deg) scale(1.2) !important;
+  }
+  .TimelineParrent {
+    height: 700px;
+  }
+
+  .rotatetext {
+    transform: rotate(0deg) !important;
+    /* display: flex; */
+    justify-content: center;
+    white-space: nowrap;
+    align-items: center;
+  }
+
+  .rotatwonly {
+    transform: rotate(0deg) !important;
+  }
+
+  .rotaterelative {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-inline: 15px !important;
+  }
+  .rotateabsolute {
+    position: relative;
+    transform: rotate(00deg) !important;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .timelineWidth {
+    transform: rotate(0deg) scale(1) !important;
+  }
+
+  .rotatetext {
+    white-space: normal;
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 514px) {
+  .rotatetext {
+    white-space: normal;
+    width: 140px;
+    display: flex;
+    align-items: center;
+    margin-block: -10px !important;
+  }
+
+  .TimelineParrent{
+    overflow-x: hidden !important;
+  }
+}

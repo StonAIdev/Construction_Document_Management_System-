@@ -1,0 +1,75 @@
+.PricingsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    z-index: 3;
+}
+
+.priceCardsContainer{
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.priceCardMain{
+    background-color: var(--darkblue);
+    background-image: linear-gradient(to right bottom, #213569, #1a2e58, #142648, #101f38, #0d1728, #0e1220, #0c0c19, #070510, #08030b, #070206, #040102, #000000);
+    background-image: linear-gradient(to right bottom, #213569, #163362, #0c315a, #042f52, #012c4a, #002944, #00273f, #012439, #012135, #011f31, #011c2d, #011a29);
+    background-image: linear-gradient(to right bottom, #2a417c, #204076, #163f70, #0d3d69, #063b62, #03395c, #023657, #023451, #02314c, #012d47, #012a42, #01273d);
+    background-image: linear-gradient(to right bottom, #3a75b9,  #2a417c);
+
+    width: 300px;
+    height: 500px;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid var(--orange);
+
+}
+
+.priceCardMain:hover{
+    transition: .2s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+}
+
+.PriceText{
+    color: white !important;
+    width: fit-content !important;
+    gap: 5px;
+
+}
+
+.detailsflex{
+    display: flex;
+    gap: 10px;
+    justify-self: start;
+    align-self: flex-start;
+    align-items: center;
+    margin-block: 8px;
+}
+
+.detailstext{
+    font-size: 1em !important;
+    font-weight: 500 !important;
+    color: white !important;
+    margin: 0px !important;
+
+}
+
+.checkicon{
+    color: #4dbd81;
+}
+
+.Questionmarkicon{
+    color: white
+}
+
+.buttonprice{
+    margin-top: auto;
+}

@@ -1,0 +1,10 @@
+.CoverCommentsContainer {
+  width: "100vw";
+  height: "100vh";
+  display: "flex";
+}
+.messagesBody {
+  overflow: "auto";
+  height: "100vh";
+  display: "flex";
+}

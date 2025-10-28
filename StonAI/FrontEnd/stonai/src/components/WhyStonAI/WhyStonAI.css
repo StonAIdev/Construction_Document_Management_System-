@@ -1,0 +1,21 @@
+.whystonaiContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 4rem;
+      z-index: 3;
+}
+
+.CardsDiv{
+  width: fit-content !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* @media only screen and (max-width: 992px) {
+.CardsDiv{
+ flex-direction: column
+} 
+}*/

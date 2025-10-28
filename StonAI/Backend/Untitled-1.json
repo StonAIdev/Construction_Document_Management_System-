@@ -1,0 +1,172 @@
+[
+    {
+        "Columns": [
+            "ITEM REF.",
+            "ITEM DESCRIPTION",
+            "QUANTITY",
+            "UNIT",
+            "UNIT RATE",
+            "TOTAL PRICE AED"
+        ],
+        "ITEM REF.": "",
+        "ITEM DESCRIPTION": "White stone, Ajloun Stone or similar, finish: brushed, size: 100X100X3cm, refer to material type S100 in the drawing",
+        "QUANTITY": 628,
+        "UNIT": "m2",
+        "UNIT RATE": "",
+        "TOTAL PRICE AED": ""
+    },
+    {
+        "Columns": [
+            "ITEM REF.",
+            "ITEM DESCRIPTION",
+            "QUANTITY",
+            "UNIT",
+            "UNIT RATE",
+            "TOTAL PRICE AED"
+        ],
+        "ITEM REF.": "",
+        "ITEM DESCRIPTION": "White stone, Ajloun Stone or similar, finish: brushed, size: 50xvariedx3cm, refer to material type S.50 in the drawing ",
+        "QUANTITY": 3352,
+        "UNIT": "m2",
+        "UNIT RATE": "",
+        "TOTAL PRICE AED": ""
+    },
+    {
+        "Columns": [
+            "ITEM REF.",
+            "ITEM DESCRIPTION",
+            "QUANTITY",
+            "UNIT",
+            "UNIT RATE",
+            "TOTAL PRICE AED"
+        ],
+        "ITEM REF.": "",
+        "ITEM DESCRIPTION": "Artificial Grass, material type FG in the drawing",
+        "QUANTITY": 176,
+        "UNIT": "m2",
+        "UNIT RATE": "",
+        "TOTAL PRICE AED": ""
+    },
+    {
+        "Columns": [
+            "ITEM REF.",
+            "ITEM DESCRIPTION",
+            "QUANTITY",
+            "UNIT",
+            "UNIT RATE",
+            "TOTAL PRICE AED"
+        ],
+        "ITEM REF.": "",
+        "ITEM DESCRIPTION": "Cast-in-Place concrete floor Type B. Color: light gray, size: 50xvariedx3cm material type C.B in the drawing ",
+        "QUANTITY": 900,
+        "UNIT": "m2",
+        "UNIT RATE": "",
+        "TOTAL PRICE AED": ""
+    },
+    {
+        "Columns": [
+            "REF.",
+            "DESC",
+            "QUANTITY",
+            "UNIT",
+            "UNIT RATE",
+            "TOTAL PRICE"
+        ],
+        "REF.": "22",
+        "DESC": "Rubber flooring 9cm recycled rubber base, 1cm EPDM wearing course. Color: light orange, material type R in the drawing",
+        "QUANTITY": 311,
+        "UNIT": "m2",
+        "UNIT RATE": 560,
+        "TOTAL PRICE": ""
+    },
+    {
+        "Columns": [
+            "REF.",
+            "DESC",
+            "QUANTITY",
+            "UNIT",
+            "UNIT RATE",
+            "TOTAL PRICE"
+        ],
+        "REF.": "23",
+        "DESC": "Tuff (Crushed Volcanic  Stone). Color: dark brown, diameter 15-25mm, material type T in the drawing ",
+        "QUANTITY": 53,
+        "UNIT": "m3",
+        "UNIT RATE": 1025,
+        "TOTAL PRICE": ""
+    },
+    {
+        "Columns": [
+            "REF.",
+            "DESC",
+            "QUANTITY",
+            "UNIT",
+            "UNIT RATE",
+            "TOTAL PRICE"
+        ],
+        "REF.": "24",
+        "DESC": "Pebbles. Color: off-white, size: 5cm, material type PE in the drawing ",
+        "QUANTITY": 3,
+        "UNIT": "m3",
+        "UNIT RATE": 400,
+        "TOTAL PRICE": ""
+    },
+    {
+        "Columns": [
+            "REF.",
+            "DESC",
+            "QUANTITY",
+            "UNIT",
+            "UNIT RATE",
+            "TOTAL PRICE"
+        ],
+        "REF.": "25",
+        "DESC": "Ceramics tiles. Color: mix of blue, size: 30x30x8mm, material type CE in the drawing",
+        "QUANTITY": 58,
+        "UNIT": "m2",
+        "UNIT RATE": 640,
+        "TOTAL PRICE": ""
+    },
+    {
+        "Columns": [
+            "REFERENCE",
+            "DESCRIPTION",
+            "AMOUNT",
+            "UNIT",
+            "UNIT RATE"
+        ],
+        "REFERENCE": "01",
+        "DESCRIPTION": "Entrance Water Feature Type1, refer to detail D01",
+        "AMOUNT": 1,
+        "UNIT": "L.S",
+        "UNIT RATE": ""
+    },
+    {
+        "Columns": [
+            "REFERENCE",
+            "DESCRIPTION",
+            "AMOUNT",
+            "UNIT",
+            "UNIT RATE"
+        ],
+        "REFERENCE": "02",
+        "DESCRIPTION": "Entrance Water Feature Type2, refer to detail D02",
+        "AMOUNT": 1209,
+        "UNIT": "L.S",
+        "UNIT RATE": ""
+    },
+    {
+        "Columns": [
+            "REFERENCE",
+            "DESCRIPTION",
+            "AMOUNT",
+            "UNIT",
+            "UNIT RATE"
+        ],
+        "REFERENCE": "07",
+        "DESCRIPTION": "Spiral Water Feature, refer to detail D07",
+        "AMOUNT": 1209,
+        "UNIT": "L.S",
+        "UNIT RATE": ""
+    }
+]

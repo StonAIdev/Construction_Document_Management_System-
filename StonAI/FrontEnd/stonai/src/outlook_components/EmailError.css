@@ -1,0 +1,48 @@
+.ErrorContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.errorimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonError1, .buttonError2, .buttonError3{
+    padding-block: 8px !important;
+    border-radius: 50px !important;
+    margin-block: 3px !important;
+    outline: 1px solid silver ;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+    width: 100%s !important;
+    border: none !important;
+    transition: .3px ease-in-out;
+}
+
+.buttonError1:hover{
+    outline-width: 3PX !important;
+    box-shadow: var(--blue) 0px 3px 8px !important;
+}
+
+.buttonError2:hover{
+    outline-width: 3PX !important;
+    box-shadow: var(--green) 0px 3px 8px !important;
+}
+
+.buttonError3:hover{
+    outline-width: 3PX !important;
+    box-shadow: var(--orange) 0px 3px 8px !important;
+}
+
+
+.buttonError1:active , .buttonError2:active , .buttonError3:active {
+    background: #ae00af;
+    background: linear-gradient(to top right, #ae00af, #001eff);
+    color: #bfbfbf;
+    box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
+    transition: 0.2s;
+   }

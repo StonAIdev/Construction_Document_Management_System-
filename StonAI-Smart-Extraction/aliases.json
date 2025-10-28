@@ -1,0 +1,480 @@
+{
+    "MAIN_CONTRACTOR": [{
+            "Key": "main contractor",
+            "Position": "top"
+        },
+        {
+            "Key": "general contractor",
+            "Position": ""
+        },
+        {
+            "Key": "main contractor",
+            "Position": ""
+        }
+    ],
+    "CLIENT": [{
+            "Key": "client",
+            "Position": "top"
+        },
+        {
+            "Key": "client",
+            "Position": ""
+        }
+    ],
+    "CONSULTANT": [{
+        "Key": "consultant",
+        "Position": "top"
+    }],
+    "DATE_1": [{
+        "Key": "date",
+        "Position": ""
+    }],
+    "SUBMITTAL_NO": [{
+            "Key": "ncr reference",
+            "Position": ""
+        },
+        {
+            "Key": "ref",
+            "Position": ""
+        },
+        {
+            "Key": "submittal no",
+            "Position": ""
+        },
+        {
+            "Key": "si reference",
+            "Position": ""
+        },
+        {
+            "Key": "wir reference",
+            "Position": ""
+        },
+        {
+            "Key": "sds reference",
+            "Position": ""
+        },
+        {
+            "Key": "mts reference",
+            "Position": ""
+        },
+        {
+            "Key": "ts reference",
+            "Position": ""
+        },
+        {
+            "Key": "rfi no",
+            "Position": ""
+        },
+        {
+            "Key": "ref no",
+            "Position": ""
+        },
+        {
+            "Key": "rfi reference",
+            "Position": ""
+        }
+    ],
+    "SUBMITTAL_TITLE": [{
+            "Key": "ncr title",
+            "Position": ""
+        }, {
+            "Key": "Subject",
+            "Position": ""
+        },
+        {
+            "Key": "submittal title",
+            "Position": ""
+        },
+        {
+            "Key": "sds title",
+            "Position": ""
+        },
+        {
+            "Key": "mts title",
+            "Position": ""
+        },
+        {
+            "Key": "ts title",
+            "Position": ""
+        },
+        {
+            "Key": "rfi title",
+            "Position": ""
+        },
+        {
+            "Key": "submittal title",
+            "Position": ""
+        },
+        {
+            "Key": "submittal title",
+            "Position": ""
+        },
+        {
+            "Key": "si titlesubject",
+            "Position": ""
+        },
+        {
+            "Key": "project name",
+            "Position": ""
+        },
+        {
+            "Key": "si title",
+            "Position": ""
+        }
+    ],
+    "ISSUED_TO": [{
+        "Key": "issued to",
+        "Position": ""
+    }],
+    "MAIN_DOCUMENT_CONTROL": [{
+        "Key": "vamed document control",
+        "Position": ""
+    }],
+    "DISCIPLINE": [{
+            "Key": "discipline",
+            "Position": ""
+        },
+        {
+            "Key": "department",
+            "Position": ""
+        },
+        {
+            "Key": "drawing type",
+            "Position": ""
+        },
+        {
+            "Key": "discipline strarcmep",
+            "Position": ""
+        },
+        {
+            "Key": "drawing type",
+            "Position": ""
+        }
+    ],
+    "NON_CONFORMANCE": [{
+        "Key": "non conformance",
+        "Position": ""
+    }],
+    "DRAWING_REFERENCE": [{
+            "Key": "drawing reference",
+            "Position": ""
+        },
+        {
+            "Key": "shop drawing no ref",
+            "Position": ""
+        }
+    ],
+    "SPECS_REFERENCE": [{
+        "Key": "specs reference",
+        "Position": ""
+    }],
+    "MATERIAL_SUBMITTAL_REFERENCE": [{
+        "Key": "material submittal reference",
+        "Position": ""
+    }],
+    "BOQ_REFERENCE": [{
+        "Key": "boq reference",
+        "Position": ""
+    }],
+    "METHOD_OF_STATEMENT_REFERNCE": [{
+        "Key": "itp method statement reference",
+        "Position": ""
+    }],
+    "OTHERS_REFERENCE": [{
+        "Key": "others reference",
+        "Position": ""
+    }],
+    "ATTACHEMENTS": [{
+            "Key": "attachments",
+            "Position": ""
+        },
+        {
+            "Key": "attachment",
+            "Position": ""
+        }
+    ],
+    "ENGINEER": [{
+        "Key": "engineer",
+        "Position": ""
+    }],
+    "PROJECT_CONSTRUCTION_MANAGER": [{
+        "Key": "project contruction manager",
+        "Position": ""
+    }],
+    "CAUSE_OF_NON_CONFORMANCE": [{
+        "Key": "cause of non conformance",
+        "Position": ""
+    }],
+    "CORRECTIVE_ACTION": [{
+        "Key": "corrective action",
+        "Position": ""
+    }],
+    "NON_CONFORMANCE_CLOSE_OUT_COMMENTS": [{
+        "Key": "non conformance close out comments",
+        "Position": ""
+    }],
+    "CONSULTANT_ENGINEER": [{
+        "Key": "hdp engineer",
+        "Position": ""
+    }],
+    "STATUS": [{
+            "Key": "status",
+            "Position": ""
+        },
+        {
+            "Key": "inspection status",
+            "Position": ""
+        },
+        {
+            "Key": "review status",
+            "Position": ""
+        }
+    ],
+    "MAIN_CONTRACTOR_MANAGER": [{
+        "Key": "vamed construction manager",
+        "Position": ""
+    }],
+    "REVISION": [{
+            "Key": "rev",
+            "Position": ""
+        },
+        {
+            "Key": "rev no",
+            "Position": ""
+        },
+        {
+            "Key": "revision",
+            "Position": ""
+        }
+    ],
+    "TO": [{
+        "Key": "to",
+        "Position": ""
+    }],
+    "INSPECTION_DATE": [{
+            "Key": "date of inspection",
+            "Position": ""
+        },
+        {
+            "Key": "date of inspection",
+            "Position": ""
+        }
+    ],
+    "INSPECTION_TIME": [{
+            "Key": "time of inspection",
+            "Position": ""
+        },
+        {
+            "Key": "inspection date and time",
+            "Position": ""
+        }
+    ],
+    "METHOD_OF_STATEMENT_REFERENCE": [{
+        "Key": "method statement ref",
+        "Position": ""
+    }],
+    "DESCRIPTION": [{
+            "Key": "description",
+            "Position": ""
+        },
+        {
+            "Key": "Inspection Description",
+            "Position": ""
+        },
+        {
+            "Key": "Project Description",
+            "Position": ""
+        },
+        {
+            "Key": "Material Details",
+            "Position": ""
+        },
+        {
+            "Key": "Description of Supplied Materials",
+            "Position": ""
+        }
+    ],
+    "LEVEL": [{
+        "Key": "level",
+        "Position": ""
+    }],
+    "GRID": [{
+        "Key": "grid",
+        "Position": ""
+    }],
+    "ARCHITECTURAL": [{
+        "Key": "architectural",
+        "Position": ""
+    }],
+    "SEQUENCE_OF_WORK": [{
+        "Key": "sequence of work",
+        "Position": ""
+    }],
+    "MATERIAL_APPROVAL_REFERENCE": [{
+        "Key": "material approval ref",
+        "Position": ""
+    }],
+    "DESCRIPTION_SUPPLIED_MATERIALS": [{
+            "Key": "description of supplied materials",
+            "Position": ""
+        },
+        {
+            "Key": "drawing description",
+            "Position": ""
+        }
+    ],
+    "QTY": [{
+        "Key": "qty",
+        "Position": ""
+    }],
+    "DATE_OF_DELVIVERY": [{
+        "Key": "date of delivery",
+        "Position": ""
+    }],
+    "INVOICE_NO": [{
+        "Key": "invoice no delivery note no shipment",
+        "Position": ""
+    }],
+    "SUPPLIER_AND_MANUFACTURER": [{
+        "Key": "details given above correct type size wt qty etc",
+        "Position": ""
+    }],
+    "STORAGE_LOCATION": [{
+        "Key": "storage location",
+        "Position": ""
+    }],
+    "PHYSICAL_DAMAGE": [{
+        "Key": "physical damage",
+        "Position": ""
+    }],
+    "DETAILS_CORRECT": [{
+        "Key": "details given above correct type size wt qty etc",
+        "Position": ""
+    }],
+    "COMPLIANCE_CERTIFICATE": [{
+        "Key": "compliance certificate test certificate ",
+        "Position": ""
+    }],
+    "CONFORM_APPROVAL_SUBMITTAL": [{
+        "Key": "conform with approval submittalsample",
+        "Position": ""
+    }],
+    "CONSULTANT_COMMENTS": [{
+        "Key": "consultants comments",
+        "Position": ""
+    }, {
+        "Key": "neb engineers representative comments",
+        "Position": ""
+    }, {
+        "Key": "clients representative comments",
+        "Position": ""
+    }, {
+        "Key": "clients approval comments",
+        "Position": ""
+    }, {
+        "Key": "clients approval and  comments",
+        "Position": ""
+    }, {
+        "Key": "clients approval & comments",
+        "Position": ""
+    }],
+    "MAIN_CONTRACTOR_COMMENTS": [{
+        "Key": "vameds comments",
+        "Position": ""
+    }],
+    "INSPECTION_STATUS": [{
+        "Key": "inspection status",
+        "Position": ""
+    }],
+    "SUBCONTRACTOR": [{
+        "Key": "subcontractor",
+        "Position": "top"
+    }],
+    "DOCUMENT_REF": [{
+        "Key": "doc ref",
+        "Position": ""
+    }],
+    "DESCIPTION": [{
+        "Key": "",
+        "Position": ""
+    }],
+    "REMARKS": [{
+        "Key": "remarks",
+        "Position": ""
+    }],
+    "ENCLOSURE": [{
+            "Key": "enclosure risk assesment",
+            "Position": ""
+        },
+        {
+            "Key": "enclosure",
+            "Position": ""
+        }
+    ],
+    "SUBCONTRACTOR SUPPLIER": [{
+        "Key": "subcontractor supplier",
+        "Position": ""
+    }],
+    "CONSULTANT_REMARKS": [{
+        "Key": "consultant remarks",
+        "Position": ""
+    }],
+    "MAIN_CONTRACTOR_REMARKS": [{
+        "Key": "vamed remarks",
+        "Position": ""
+    }],
+    "SENDING_SEPERATLY": [{
+        "Key": "we are sending herewith under seperate cover please check one box ",
+        "Position": ""
+    }],
+    "SPEC_BOQ_DRAWING_REF": [{
+            "Key": "spec boq drawing ref",
+            "Position": ""
+        },
+        {
+            "Key": "drawing no",
+            "Position": ""
+        }
+    ],
+    "SUBCONTRACTOR_SUPPLIER": [{
+        "Key": "subcontractor supplier",
+        "Position": ""
+    }],
+    "MAIN_CONTRACTOR_DOCUMENT_CONTROL": [{
+        "Key": "vamed document control",
+        "Position": ""
+    }],
+    "SITE_INSTRUCTION_DETAILS": [{
+        "Key": "site intruction details",
+        "Position": ""
+    }],
+    "SUBCONTRACTOR_RESPONSE": [{
+        "Key": "subcontractor response",
+        "Position": ""
+    }],
+    "SITE_INSTRUCTION_IMPLEMENTATION_COMMENTS": [{
+        "Key": "site instruction implementation comments",
+        "Position": ""
+    }],
+    "INSPECTION_DESCRIPTION": [{
+        "Key": "inspection description",
+        "Position": ""
+    }],
+    "LOCATION": [{
+            "Key": "location",
+            "Position": ""
+        },
+        {
+            "Key": "plot nolocation",
+            "Position": ""
+        }
+    ],
+    "NAME_POSITION": [{
+        "Key": "nameposition",
+        "Position": ""
+    }],
+    "SIGNATURE": [{
+        "Key": "signature",
+        "Position": ""
+    }]
+}

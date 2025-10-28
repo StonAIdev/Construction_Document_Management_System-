@@ -1,0 +1,97 @@
+{
+  "project_id": 55,
+  "document_name": "VEE-RIH-SDS-0255-PKE-R0.pdf",
+  "document_size": 12000,
+  "last_modified": "2020-02-18T06:03:38.320Z",
+  "document_type": "image/jpeg",
+  "revision_number": 1,
+  "document_category": "shop_drawing_submittal",
+  "uploaded_by": "Saad@gmail.com",
+  "Main Contractor": "VAMED",
+  "Client": "BLUE APPLE",
+  "Consultant": "HDP",
+  "Subcontractor": "PKE",
+  "Project": "AL REEM INTEGRATED HEALTHCARE",
+  "Location": "AL REEM ISLAND, ABU DHABI, UAE",
+  "Document_title": "SHOP DRAWING SUBMITTAL",
+  "SDS REFERENCE": "VEE-RIH-SDS-0255-PKE-R0",
+  "Date:": "18 MAY 2020",
+  "SDS Title": "Power Cable Containment Layout @ Sixth Floor - Block-B",
+  "Discipline": ["Elec"],
+  "Drawing": [
+    {
+      "Drawing Number": "PKE-PB50057-01-SD-E175-CT-R00",
+      "Description": "Power Cable Containment Layout @ Sixth Floor - Block - B",
+      "Status": "",
+      "Remarks": ""
+    }
+  ],
+  "Authorized Sub Contractor Representative": {
+    "Name/Position": "Mr.Tanvir Ahmed/Project Manager",
+    "Signature": "",
+    "Date": "18 May 2020"
+  },
+  "Consultant Comments": {
+    "Comments": "",
+    "Name/Position": "",
+    "Signature": "",
+    "Date": ""
+  },
+  "Main Contractor Comments": {
+    "Comments": "",
+    "Name/Position": "",
+    "Signature": "",
+    "Date": ""
+  },
+  "Status": ""
+}
+{
+  "project_id": 55,
+  "document_name": "J297-UNEC-MAS-047-R1.pdf",
+  "document_size": 940559,
+  "last_modified": "2021-11-02T11:51:12.127Z",
+  "document_type": "application/pdf",
+  "revision_number": 1,
+  "document_category": "material_submittal",
+  "uploaded_by": "Saad@gmail.com",
+  "Client":"BLUE APPLE",
+  "Consultant":"HDP",
+  "General Contractor":"VAMED",
+  "C&S Contractor":"UNEC",
+  "PROJECT":"AL REEM INTEGRATED HEALTHCARE, PACKAGE 2 - AL REEM ISLAND",
+  "Document_title":"MATERIAL SUNMITTAL FORM",
+  "Submittal title":"AUTOMATED SLIDING DOOR SYSTEM",
+  "Date":"23/Jun/19",
+  "Submittal No:":"J297/UNIC/MAS/047",
+  "Revision":"R-1",
+  "Discipline":["Architectural"],
+  "Material":[
+    {
+      "Ref. Specs/BOQ/Dwg":["A442","A489"],
+      "Description of Meterial":"MATERAIL SUBMITTAL FOR AUTOMATIC SLIDING DOOR OPERATOR [GEZE:EC DRIVE]",
+      "Copies":"2 Sets Hard copy & 1 CD",
+      "Remarks":""
+    },
+  ],
+  "Location of Use":"Lobby Rehablitation",
+  "Enclosure":["Manufacturer's Data","Test Report","License","Certificates","Previous Approvals","Other: ESTIDAMA COMPLIANCE"],
+  "Subcontractor/Supplier": {
+    "Subcontractor/Supplier":"M/s. White Aluminium",
+    "Name": "Eng.Hussam Alfhili(Project Manager)",
+    "Signature": "",
+    "Date": "18 May 2020"
+  },
+  "Consultant's Remarks":{
+    "Remarks": "",
+    "Name/Position": "",
+    "Signature": "",
+    "Date": ""
+  },
+  "General Contractor Remarks":{
+    "Remarks": "",
+    "Name/Position": "",
+    "Signature": "",
+    "Date": ""
+  },
+  "Status": ""
+}

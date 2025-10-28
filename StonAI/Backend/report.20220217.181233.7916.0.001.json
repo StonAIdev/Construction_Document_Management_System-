@@ -1,0 +1,156 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20220217.181233.7916.0.001.json",
+    "dumpEventTime": "2022-02-17T18:12:33Z",
+    "dumpEventTimeStamp": "1645103553910",
+    "processId": 7916,
+    "cwd": "D:\\Saad\\StoneAi\\Backend",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "app.js"
+    ],
+    "nodejsVersion": "v12.14.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.14.0",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.0/node-v12.14.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.0/node-v12.14.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.14.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.19042",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 5984625,
+        "nice": 0,
+        "sys": 16068046,
+        "idle": 351101000,
+        "irq": 2255140
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 5026468,
+        "nice": 0,
+        "sys": 5331718,
+        "idle": 362795406,
+        "irq": 879343
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 16940984,
+        "nice": 0,
+        "sys": 9264156,
+        "idle": 346948453,
+        "irq": 153671
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 3734500,
+        "nice": 0,
+        "sys": 3234890,
+        "idle": 366184187,
+        "irq": 35171
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 8669500,
+        "nice": 0,
+        "sys": 5961703,
+        "idle": 358522375,
+        "irq": 94468
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 3587500,
+        "nice": 0,
+        "sys": 4415578,
+        "idle": 365150500,
+        "irq": 58203
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 7809828,
+        "nice": 0,
+        "sys": 5772343,
+        "idle": 359571406,
+        "irq": 92718
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 6469218,
+        "nice": 0,
+        "sys": 3994062,
+        "idle": 362690296,
+        "irq": 43984
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 6574437,
+        "nice": 0,
+        "sys": 6444718,
+        "idle": 360134421,
+        "irq": 58140
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 3460812,
+        "nice": 0,
+        "sys": 2499390,
+        "idle": 367193375,
+        "irq": 40453
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 18231687,
+        "nice": 0,
+        "sys": 8661406,
+        "idle": 346260468,
+        "irq": 81562
+      },
+      {
+        "model": "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz",
+        "speed": 2664,
+        "user": 3489781,
+        "nice": 0,
+        "sys": 4898671,
+        "idle": 364765109,
+    

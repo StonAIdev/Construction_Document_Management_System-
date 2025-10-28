@@ -1,0 +1,104 @@
+.createEmailContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+  padding-inline: 0.5em;
+  height: 100%;
+}
+
+.createEmailSplit {
+  display: flex;
+  width: 95% !important;
+  height: 80vh !important;
+  margin-inline: 3em;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 7px;
+}
+
+.addAttacchmenticon {
+  color: var(--blue);
+  margin-top: 6px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.buttoncontainer {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  align-items: center;
+}
+
+
+
+.contextIcons {
+  margin-left: 5px;
+  margin-right: 15px;
+  font-size: 14px;
+  color: var(--blue) !important;
+
+}
+
+
+.ContextSearchBtn{
+  border: 2px solid var(--blue);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  font-size: 14px;
+  color: var(--blue) !important;
+  transition: 0.5s ease-in-out;
+
+}
+
+.ContextSearchBtn:hover{
+  background-color: var(--blue) ;
+  color: white !important;
+  transition: 0.3s ease-in-out;
+}
+
+.filtersSubmenu{
+  color: black !important;
+  text-transform: capitalize !important;
+  width: 100% !important;
+  justify-content: start !important;
+  background-color: transparent !important;
+
+}
+
+.EmailBody{
+  position: relative !important;
+
+}
+
+.EmailBody textarea{
+  max-height: 160px !important;
+  min-height: fit-content !important
+}
+
+.EmailBody .MuiOutlinedInput-root {
+  display: block !important;
+}
+
+.emailbodyheight{
+  height: 100% !important;
+}
+
+.emailbodyheight fieldset{
+  height: 100% !important;
+}
+
+.emailbodyheight textarea{
+  height: 100% !important;
+}
+
+.EmailDrawer-Radio label{
+  margin: 0px !important;
+}
+
+.EmailDrawer-Radio span:last-child{
+  font-size: 14px !important;
+}

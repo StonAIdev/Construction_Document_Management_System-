@@ -1,0 +1,14 @@
+.SidebarFocus a:focus-within {
+  background-color: var(--blue) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.ProjectSelect fieldset legend {
+  width: 0% !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .logoStyle {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,13 @@
+.SkelContainer {
+  display: flex;
+  width: 17rem;
+  min-height: 4rem;
+  padding: 0.3em;
+  border-radius: 5px;
+}
+
+.SkelDivider {
+  margin: 0px;
+  width: 100% !important;
+  border-width: 2px !important;
+}

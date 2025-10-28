@@ -1,0 +1,88 @@
+.UploadContainer {
+  height: 95px;
+  width: 178px;
+  border: 1px solid silver;
+  background-color: #f5f5f5;
+  transition: 0.2s ease-in-out;
+  margin: 10px;
+
+  border-radius: 8px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.UploadRow {
+  height: 100%;
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+
+.uploadIcon {
+  font-size: 28px;
+}
+
+.UploadContainer:hover {
+  /* background-color: black; */
+}
+
+.pdfpreview {
+  height: 130px;
+  width: 200px;
+}
+
+.uploadicons {
+  background-color: var(--darkblue);
+  height: 23px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+.uploadicons svg {
+  font-size: 24px;
+  color: white;
+}
+
+.uploadiconsrow {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-self: flex-end;
+  margin-top: auto;
+  margin-left: 6px;
+  margin-bottom: 4px;
+}
+
+.PDFIMAGE {
+  height: 130px;
+  width: 200px;
+}
+
+.UploadRow:hover {
+  opacity: 1 !important;
+  background-color: hsla(0, 0%, 96%, 0.5);
+}
+
+.UploadCardTitle {
+  position: absolute;
+  border-radius: 0 0 9px 9px;
+  color: white;
+  background: var(--blue);
+  width: 99.7% !important;
+  display: flex;
+  top: 82%;
+  padding-inline: 10px;
+  opacity: 1 !important;
+  transition: 0.2 ease-in-out;
+}
+
+.UploadCardTitlehOVER {
+  opacity: 0 !important;
+  z-index: -1;
+}

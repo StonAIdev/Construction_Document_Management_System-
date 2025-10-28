@@ -1,0 +1,37 @@
+.FooterContainer{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    width: 100%;
+    color: white;
+    background: black;
+    padding-block: 2rem;
+    padding-bottom: 0px;
+    text-align: left !important;
+}
+
+.footerline{
+    opacity: 1 !important;
+    padding: 0px;
+    margin: 0px;
+    margin-top: -1.1rem;
+    height: 0.6rem !important;
+    color: white !important;
+    background: var(--blueGradiant);
+    width: 100% !important;
+}
+
+.footerLinkColor{
+    color: white !important;
+}
+
+.footerHeadColor{
+    color: var(--blue) !important;
+}
+
+.footerLine{
+    background: white;
+
+}

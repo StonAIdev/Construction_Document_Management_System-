@@ -1,0 +1,322 @@
+.HeaderContainer {
+  padding-block: 2vh;
+  min-height: 500px;
+  background-color: white;
+  z-index: 1;
+  position: relative;
+  display: grid;
+  align-content: center;
+}
+
+.HeaderinnerContainer {
+  width: 90vw !important;
+  display: flex;
+  flex-direction: row;
+  /* min-height: 350px !important; */
+
+}
+
+.Headerimage {
+  width: 60% !important;
+}
+
+.slide2Image{
+  margin-right: -10em;
+  margin-left: 6em;
+}
+
+.TextAlignHeader {
+  margin-bottom: 1.5em !important;
+  align-self: flex-end;
+  text-align: left;
+}
+.HeaderTextContainer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  z-index: 5;
+}
+
+.HeaderTextContainer3 {
+  /* display: flex; */
+  margin-top: 10% !important;
+  z-index: 5;
+} 
+.HeaderDescription {
+  width: 70%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding: 0px;
+  margin: 0px;
+  padding-right: 5rem;
+  z-index: 5;
+}
+
+.headerButtonContainer {
+  margin-right: 7px;
+  /* align-self: flex-end; */
+  margin-top: 10px;
+}
+
+.carouselStyling ul li + li + li + .react-multi-carousel-dot--active button {
+  border: 1px solid var(--blue) !important;
+  transform: scale(1.5);
+  transition: transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.carouselStyling ul li + li + .react-multi-carousel-dot--active button {
+  background-color: var(--blue) !important;
+  transform: scale(1.5);
+  transition: transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.carouselStyling ul li + .react-multi-carousel-dot--active button {
+  background-color: var(--blue) !important;
+  transform: scale(1.5);
+  transition: transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.react-multi-carousel-dot--active button {
+  background-color: var(--blue) !important;
+  transform: scale(1.5);
+  transition: transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.caps{
+  text-transform: uppercase !important;
+}
+.nocaps{
+  text-transform: none !important;
+}
+
+
+.ProjectBlink{
+  opacity: 1;
+  animation: project 5s ease-in-out infinite forwards ;
+  /* animation-delay: 2.5s;  */
+}
+
+.departmentBlink{
+  opacity: 1;
+  animation: project1 5s ease-in-out infinite forwards;
+  margin-left: -135px;
+}
+
+.staffBlink{
+  animation: project2 5s ease-in-out infinite forwards;
+  margin-left: -215px;
+}
+
+@keyframes project {
+  0%    {color: transparent;} 
+  10%   {color: var(--blue);} 
+  20%   {color: var(--blue);} 
+  30%   {color: var(--blue);} 
+  35%   {color: transparent;} 
+  40%   {color: transparent;} 
+  50%   {color: transparent;} 
+  60%   {color: transparent;} 
+  70%   {color: transparent;} 
+  80%   {color: transparent;} 
+  90%   {color: transparent;} 
+  100%  {color: transparent;} 
+}
+
+
+@keyframes project1 {
+  0%    {color: transparent;}
+  10%   {color: transparent;}
+  20%   {color: transparent;}
+  30%   {color: transparent;}
+  35%   {color: transparent;} 
+  40%   {color: var(--blue);}
+  50%   {color: var(--blue);}
+  60%   {color: var(--blue);}
+  65%   {color: transparent;} 
+  70%   {color: transparent;}
+  80%   {color: transparent;}
+  90%   {color: transparent;}
+  100%  {color: transparent;}
+}
+
+
+@keyframes project2 {
+  0%    {color: transparent;}
+  10%   {color: transparent;}
+  20%   {color: transparent;}
+  30%   {color: transparent;}
+  40%   {color: transparent;}
+  50%   {color: transparent;}
+  60%   {color: transparent;}
+  65%   {color: transparent;} 
+  70%   {color: var(--blue);}
+  80%   {color: var(--blue);}
+  90%   {color: var(--blue);}
+  100%  {color: transparent;}
+}
+
+
+/* ----------------------------------- Animations  -----------------------------------  */
+
+.text-focus-in {
+  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation-delay: 1s;
+}
+
+.text-focus-in-image {
+  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation-delay: 0.5s;
+}
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.fade-in-bottom {
+  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation-delay: 1.9s;
+}
+
+@keyframes fade-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fade-in-bottom2 {
+  -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation-delay: 1.9s;
+}
+
+@keyframes fade-in-bottom2 {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------- Media Queries  -----------------------------------  */
+@media only screen and (max-width: 992px) {
+  .HeaderDescription {
+    flex-direction: column;
+  }
+  .headerButtonContainer {
+    margin-top: 1rem;
+  }
+
+  .TextAlignHeader {
+    padding-left: 0em;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .TextAlignHeader {
+    position: relative;
+    margin-top: 0em;
+    text-align: left;
+    align-self: center;
+    width: 90vw !important;
+    margin-right: 0px;
+    padding-left: 5px;
+    padding-top: 2rem;
+  }
+
+  .HeaderContainer {
+    margin-top: 0vh;
+    height: fit-content;
+  }
+
+  .headerButtonContainer {
+    align-self: flex-start;
+  }
+
+  .headerButtonContainer {
+    width: 8rem;
+  }
+}
+
+@media only screen and (max-width: 1006px) {
+  .HeaderinnerContainer {
+    flex-direction: column;
+  }
+
+  .Headerimage {
+    width: 80% !important;
+    margin: auto;
+  }
+
+  .TextAlignHeader {
+    margin-top: -1em;
+  }
+
+  .HeaderTextContainer3 {
+    margin-top: -30px !important;
+    margin-bottom: 30px !important;
+  } 
+}
+
+@media only screen and (max-width: 1006px) {
+  .Headerimage {
+    margin-bottom: 2.6em !important;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+.departmentBlink{
+  margin-left: -90px;
+}
+
+.staffBlink{
+  margin-left: -142px;
+}
+}
+

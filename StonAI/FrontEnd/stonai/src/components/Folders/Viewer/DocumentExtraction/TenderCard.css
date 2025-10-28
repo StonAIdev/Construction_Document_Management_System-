@@ -1,0 +1,22 @@
+.tenderCardContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100px;
+    row-gap: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid silver;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 5px;
+    line-height: 1.3 !important;
+}
+
+.tenderCardTextarea{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 5px;
+    line-height: 1.3 !important;
+}
+
